@@ -1,0 +1,8 @@
+export default function About(){
+    return(
+        <section className="about-section">
+            <h4>Who Are We</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A laudantium ipsa earum debitis ut aperiam ipsam at, sint labore? Corrupti repellat, debitis illum rerum fugiat labore reprehenderit! At delectus laudantium corporis neque, praesentium reprehenderit itaque, recusandae eum modi dicta mollitia. Repellendus quaerat, ullam repellat in et placeat ducimus ea ipsam, fugiat accusantium magni alias temporibus atque quasi obcaecati? Rem recusandae quisquam nemo, autem fugit numquam ea voluptatibus architecto unde esse ab deserunt quasi fuga laborum ratione animi, aspernatur consectetur magnam error assumenda illo sunt ipsa provident atque. Cum, mollitia aut officiis ipsa architecto provident odit consectetur facere commodi dolorum laborum exercitationem dignissimos alias nesciunt placeat? Id odio debitis deserunt atque voluptate voluptates ipsam sequi tempora vitae ex aperiam vel, exercitationem ipsum ab suscipit veritatis voluptatibus? Atque itaque rerum cumque reprehenderit, asperiores assumenda quae exercitationem cum minus esse eaque laudantium, perspiciatis accusamus fugiat, dolorem libero ratione maiores nulla totam repudiandae sint suscipit at reiciendis? Possimus excepturi itaque expedita inventore corporis quo consectetur ad laudantium minima quae explicabo repellat ea obcaecati dignissimos voluptatem repudiandae, porro accusamus quasi impedit recusandae dolorum deleniti error minus exercitationem? Ea dolorem ipsum perspiciatis in accusamus adipisci harum laboriosam aliquam ipsam nostrum quas, incidunt corrupti quo voluptate a.</p>
+        </section>
+    )
+}
