@@ -1,13 +1,12 @@
-import "./App.css"
-import Loading from "./animation/Loading"
-import Count from "./components/Count"
-import DataFetch from "./components/Product/Products"
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Allroute from "./router/Allroute";
 
-export default function App(){
-  return(
+export default function App() {
+  return (
     <div>
-     {/* <Count/> */}
-     <DataFetch/>
+      <Navbar />
+      <Allroute />
     </div>
-  )
+  );
 }

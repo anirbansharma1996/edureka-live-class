@@ -21,22 +21,20 @@ const DataFetch = () => {
     };
     fetchData();
   }, []);
-
-  if(isLoading){
-    return <Loading/>
-  }
-
-
-
-
+if(isLoading){
+  return(<Loading/>)
+}
   return (
-    <div>
-      <ProductCard props={data} />
-    </div>
+    <section>
+      <h5>{data?.length} Products Found</h5>
+      <div className="parent">
+        {data?.map(
+          (el) => (<ProductCard props={el} />)
+         
+        )}
+      </div>
+    </section>
   );
 };
 
 export default DataFetch;
-
-
-
