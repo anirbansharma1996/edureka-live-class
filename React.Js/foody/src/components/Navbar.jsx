@@ -15,10 +15,11 @@ export default function Navbar() {
       p_name: "Find Recipe",
       p_link: "/find-recipe",
     },
-    {
-      p_name: "Create An Account",
-      p_link: "/register",
-    },
+   {
+    p_name:"Meals by First Letter",
+    p_link:"/meals-by-first-letter"
+
+   }
   ];
 
   return (
@@ -29,7 +30,7 @@ export default function Navbar() {
           alt="logo"
         />
         <NavLink to="/"  style={{ textDecoration: "none", color: "white" }}>
-          <h1>&nbsp;FOODY</h1>
+          <h1>&nbsp;FOODY.</h1>
         </NavLink>
       </div>
       <div className="nav-info">
@@ -67,10 +68,14 @@ export default function Navbar() {
             ></button>
           </div>
           <div className="offcanvas-body small">
-            <p>Home</p>
-            <p>Dish Of the Day</p>
-            <p>Find Recipe</p>
-            <p>Create An Account</p>
+          {links.map((el) => (
+          <a
+            href={el.p_link}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <p>{el.p_name}</p>
+          </a>
+        ))}
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Menu from "../pages/menu/Menu";
 import Recipe from "../pages/recipe/Recipe";
 import Dod from "../pages/Dod";
 import FindDish from "../pages/FindDish";
+import Mletter from "../pages/Mletter";
 
 export default function Allroute() {
   return (
@@ -13,7 +14,7 @@ export default function Allroute() {
       <Route path="/find-recipe" element={<FindDish/>}></Route>
       <Route path="/menu/:name" element={<Menu />}></Route>
       <Route path="/recipe/:name" element={<Recipe />}></Route>
-      <Route path="/register" element={"LOGIN"}></Route>
+      <Route path="/meals-by-first-letter" element={<Mletter/>}></Route>
       <Route path="*" element={<Home />}></Route>
     </Routes>
   );
