@@ -17,6 +17,12 @@ const Navbar = () => {
         >
           <li>Products</li>
         </NavLink>
+        <NavLink
+          to={"/cart"}
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          <li>Cart</li>
+        </NavLink>
       </ul>
     </nav>
   );

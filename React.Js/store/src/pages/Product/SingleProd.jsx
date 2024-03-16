@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const SingleProd = () => {
-  const [soloData, setSoloData] = useState({});
   const { id } = useParams();
-
+  const [soloData, setSoloData] = useState({});
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart-b3")) || []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,17 +21,21 @@ const SingleProd = () => {
     fetchData();
   }, [id]);
 
+  const handleAddtoCart = (item) => {
+    const newItem = [...cart, item];
+    setCart(newItem);
+    alert("item added to the cart");
+    localStorage.setItem("cart-b3", JSON.stringify(newItem));
+  };
+
   return (
     <section>
       <img style={{ width: "200px" }} src={soloData.image} alt="" />
       <h2>{soloData.title}</h2>
       <p>{soloData.category}</p>
       <p>{soloData.description}</p>
-      {/* <p>
-        {soloData.rating.rate} 
-      </p> */}
       <h4>{soloData.price}</h4>
-      <button>ADD TO CART</button>
+      <button onClick={() => handleAddtoCart(soloData)}>ADD TO CART</button>
     </section>
   );
 };
