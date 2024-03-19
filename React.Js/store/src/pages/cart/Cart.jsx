@@ -5,7 +5,7 @@ export default function Cart() {
     JSON.parse(localStorage.getItem("cart-b3")) || []
   );
   const [count, setCount] = useState({});
-  // const obj = {name:"soham"} // print(obj[name])
+
   const handleDec = (id) => {
     setCount((prev) => ({ ...prev, [id]: (prev[id] || 1) - 1 }));
   };

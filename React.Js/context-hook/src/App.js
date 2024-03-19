@@ -1,13 +1,12 @@
 import React from "react";
-import Home from "./components/Home";
-import About from "./components/About";
+import Navbar from "./components/Navbar";
+import Allroutes from "./router/Allroutes";
 
 export default function App() {
   return (
     <div>
-      <Home />
-      <hr />
-      <About />
+        <Navbar/>
+        <Allroutes/>
     </div>
   );
 }
