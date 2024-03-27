@@ -18,8 +18,7 @@ export default function Navbar() {
    {
     p_name:"Meals by First Letter",
     p_link:"/meals-by-first-letter"
-
-   }
+   },
   ];
 
   return (
