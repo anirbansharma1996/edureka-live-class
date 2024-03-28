@@ -1,0 +1,32 @@
+footer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  width: 90%;
+  margin: auto;
+
+}
+.footer-logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-logo > img {
+  width: 80px;
+  height: 80px;
+}
+.footer-contact{
+   width: 20%;
+   display: flex;
+   justify-content: space-evenly;
+}
+@media (max-width:800px){
+    footer{
+        display: flex;
+       flex-direction: column;
+       align-items: flex-start;
+    }
+}
