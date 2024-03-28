@@ -15,7 +15,14 @@ export default function Navbar() {
       p_link: "/",
     },
     {
-      p_name: "Cart",
+      p_name: (
+        <span class=" position-relative">
+         Cart
+          <span class="position-absolute top-2 start-100 translate-middle badge rounded-pill bg-danger">
+           0
+          </span>
+        </span>
+      ),
       p_icon: <i className="bi bi-cart2"></i>,
       p_link: "/",
     },
@@ -65,13 +72,13 @@ export default function Navbar() {
           ></button>
         </div>
         <div className="offcanvas-body">
-        {links.map((el) => (
-          <a href={el.p_link}>
-            <p>
-              {el.p_icon} {el.p_name}
-            </p>
-          </a>
-        ))}
+          {links.map((el) => (
+            <a href={el.p_link}>
+              <p>
+                {el.p_icon} {el.p_name}
+              </p>
+            </a>
+          ))}
         </div>
       </div>
     </nav>
