@@ -1,0 +1,127 @@
+.parent {
+  border: 2px solid;
+  height: 500px;
+  width: 200px;
+  background: linear-gradient(green, blue);
+  color: white;
+  position: relative;
+  /* left: 20px;
+    top: 30px;
+    right: 50px;
+    bottom: -20px; */
+}
+
+.child {
+  background-color: red;
+  padding: 10px;
+  text-align: center;
+  /* position: fixed;
+    top: 20px;
+    left: 30px; */
+  position: absolute;
+  top: 15px;
+  left: 30px;
+}
+
+.outer {
+  border: 2px solid;
+  height: 30px;
+  position: relative;
+}
+
+.inner {
+  background-color: yellow;
+  height: 30px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 15px;
+  left: 15px;
+  transition: 0.5s;
+}
+
+.n {
+  width: 100%;
+  background-color: blue;
+  padding: 5px;
+  text-align: center;
+  color: white;
+  position: fixed;
+  z-index: 999;
+}
+
+.f {
+  background-color: green;
+  position: sticky;
+  top: 0;
+  height: 100px;
+  width: 100%;
+}
+.s {
+  background-color: red;
+  position: relative;
+  top: 30px;
+  left: 30px;
+  height: 500px;
+  width: 70%;
+}
+
+.flex-box,
+.flex-box-2 {
+  border: 1px solid red;
+  padding: 2px;
+  display: flex;
+  height: 100px;
+  width: 100%;
+  gap: 6px;
+}
+.flex-box > div,
+.flex-box-2 > div {
+  border: 1px solid teal;
+  width: 100%;
+  height: inherit;
+}
+
+.flexy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 70%;
+  border: 2px solid;
+  padding: 3px;
+  color: white;
+}
+
+.flexy > div {
+  background-color: blue;
+}
+
+.flexg {
+    color: white;
+  border: 2px solid;
+  width: 70%;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+}
+.flexg > div {
+  background-color: red;
+}
+
+@media (max-width: 768px) {
+  .flex-box {
+    display: flex;
+    flex-direction: column;
+  }
+  .flex-box-2 {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .flexg {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+}

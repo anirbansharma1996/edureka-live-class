@@ -1,0 +1,27 @@
+.one {
+  display: flex;
+  gap: 7px;
+  border: 2px solid green;
+  margin-bottom: 5px;
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+  }
+  p {
+    color: grey;
+  }
+}
+
+.two{
+    border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    img{
+        width: 100px;
+    }
+
+}

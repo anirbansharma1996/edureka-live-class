@@ -1,0 +1,129 @@
+.spinner {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 7px solid rgb(173, 168, 168);
+  border-top-color: blue;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pulse {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  height: 20px;
+  width: 50px;
+  background-color: red;
+  border-radius: 20px;
+  animation: bit 2s linear infinite;
+}
+
+@keyframes bit {
+  0% {
+    transform: scale(0);
+    background-color: red;
+  }
+  25% {
+    transform: scale(1.4);
+    background-color: rgb(0, 255, 8);
+  }
+  50% {
+    transform: scale(2);
+    background-color: rgb(0, 85, 255);
+  }
+  75% {
+    transform: scale(5);
+    background-color: rgb(255, 0, 247);
+  }
+  100% {
+    transform: scale(100);
+    background-color: rgb(238, 255, 0);
+  }
+}
+
+.rotate-center {
+  animation: rotate-center 1s linear infinite both;
+  background-color: red;
+  height: 30px;
+  width: 30px;
+}
+
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+.tracking-in-expand {
+  animation: tracking-in-expand 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite
+    both;
+}
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.wobble-hor-bottom {
+    width: 100%;
+  animation: wobble-hor-bottom 4s infinite both;
+}
+
+@keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    transform: translateX(0);
+    transform-origin: 50% 50%;
+  }
+  15% {
+    transform: translateX(-30px) rotate(-6deg);
+  }
+  30% {
+    transform: translateX(15px) rotate(6deg);
+  }
+  45% {
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
+  60% {
+    transform: translateX(9px) rotate(2.4deg);
+  }
+  75% {
+    transform: translateX(-6px) rotate(-1.2deg);
+  }
+}
+
+
+img{
+    width: 70%;
+}
+
+.gallery{
+   overflow-x: scroll;
+   white-space: nowrap;
+   width: 100%;
+}
+
+.main{
+   display: flex; 
+   gap: 5px;
+}

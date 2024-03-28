@@ -1,0 +1,51 @@
+// Variables
+$primary-font: Helvetica, sans-serif;
+$primary-color: red;
+
+.main-one {
+  background-color: $primary-color;
+  height: 60px;
+  font-family: $primary-font;
+}
+.main-two {
+  background-color: $primary-color;
+  height: 30px;
+}
+//modules
+@use "base";
+.main-three {
+  background-color: base.$primary-color;
+  font-size: base.$primary-font-size;
+  color: base.$primary-font-color;
+}
+//mixins
+
+@mixin theme($theme: rgb(0, 208, 255)) {
+  background-color: $theme;
+  color: rgb(7, 7, 7);
+  height: 40px;
+}
+
+.info {
+  @include theme;
+}
+.alert {
+  @include theme($theme: red);
+}
+.success {
+  @include theme($theme: green);
+}
+
+//Operators 
+
+$primary-width: 100px;
+$primary-padding: 10px;
+
+.box {
+  width: $primary-width + 20px;
+  height: $primary-width - 30px;
+  padding: $primary-padding * 2;
+  margin: $primary-width / 2;
+  border: $primary-width % 3 solid black;
+}
+

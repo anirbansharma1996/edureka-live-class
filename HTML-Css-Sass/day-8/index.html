@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- select tag -->
+    <select>
+      <option value="" disabled selected>Select City</option>
+      <option value="kolkata">Kolkata</option>
+      <option value="siliguri">Siliguri</option>
+      <option value="jalpaiguri">Jalpaiguri</option>
+    </select>
+    <!-- datalist tag  -->
+    <input type="text" list="city" />
+    <datalist id="city">
+      <option value="kolkata">Kolkata</option>
+      <option value="jalpaiguri">Jalpaiguri</option>
+      <option value="siliguri">Siliguri</option>
+    </datalist>
+   <!-- radio button -->
+    <input name="gender" type="radio" />Man
+    <input name="gender" type="radio" />Woman
+    <input name="gender" type="radio" />Others
+    <hr />
+<!-- positions in css -->
+    <div class="parent">
+        <div class="child">child</div>
+    </div>
+<!-- :root in css -->
+    <div class="main">
+      <div class="element">
+        <h1>Edureka</h1>
+      </div>
+    </div>
+    <div class="main-2">
+        <div class="element-2">
+            <h1>Edureka-2</h1>
+          </div>
+    </div>
+  </body>
+</html>
+
+
+/* position */
+.parent{
+    position: relative;
+    height: 50vh;
+    width: 50vw;
+    background-image: linear-gradient(red,yellow)
+}
+
+.child{
+    height: 40px;
+    width: 40px;
+    background-color: blue;
+    color: white;
+    position: absolute;
+    top: 10%;
+}
+
+/* root element in css */
+
+:root {
+  --primary-color: rgb(0, 128, 2);
+  --text-color: white;
+}
+
+.main {
+  background-color: var(--primary-color);
+}
+.main-2 {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
