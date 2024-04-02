@@ -120,6 +120,8 @@ console.log(r4)
 // Object
 // object stores data in KEY VALUE pair
 // let obj1 = new Object()
+// obj.key = value 
+// obj[key] = value
 let obj = {
   name: "anirban",
   age: 27,
