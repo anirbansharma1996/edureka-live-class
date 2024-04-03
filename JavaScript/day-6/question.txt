@@ -1,0 +1,10 @@
+1.Write a JavaScript program to concatenate two strings.
+2.Write a function to find the length of a string.
+3.Write a program to convert a string to uppercase.
+4.Write a function to check if a string contains a specific substring.
+5.Write a program to reverse a string.
+6.Write a function to count the number of vowels in a string.
+7.Write a JavaScript program to remove all white spaces from a string.
+8.Write a function to check if a string is a palindrome.
+9. Write a program to extract the domain name from a URL.
+10.Write a function to capitalize the first letter of each word in a sentence.
