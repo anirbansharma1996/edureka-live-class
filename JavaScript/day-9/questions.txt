@@ -1,0 +1,9 @@
+1. Fibonacci series 
+2. Prime Number
+3. Odd/Even Number 
+4. Armstrong Number 
+5. Reverse Number 
+6. Frequency Check 
+7. Unique Elememts in an Array / string
+8. remove duplicate from Array / string
+
