@@ -40,16 +40,16 @@ check.addEventListener("click", () => {
 const pass = document.getElementById("pass");
 const view = document.getElementById("view");
 
-let count = 1;
+let count = true;
 view.addEventListener("click", () => {
-  count++;
-  if (count % 2 === 0) {
+  if (count) {
     pass.type = "text";
     view.innerText = "hide";
   } else {
     pass.type = "password";
     view.innerText = "show";
   }
+   count = !count
 });
 //--------------------
 const start = document.getElementById("start");
