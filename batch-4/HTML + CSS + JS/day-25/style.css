@@ -1,0 +1,39 @@
+#todo-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  margin: auto;
+  gap: 10px;
+}
+li{
+    border: 1px dashed;
+    padding: 5px 10px;
+    margin-right: 3px;
+}
+.btn-div>button:nth-child(1){
+    background-color: green;
+    color: white;
+    border: 0;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+.btn-div>button:nth-child(2){
+    background-color: rgb(242, 16, 16);
+    color: white;
+    border: 0;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 2px;
+    cursor: pointer;
+}
+@media (max-width:800px) {
+    #todo-list {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin: auto;
+      } 
+}
