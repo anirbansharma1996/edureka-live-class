@@ -20,6 +20,7 @@ for (let char of str3) {
 }
 console.log(length); // Output: 10
 
+
 //3.Convert a string to uppercase:
 
 const str4 = "javascript";
@@ -28,6 +29,8 @@ for (let char of str4) {
     uppercaseStr += char.toUpperCase();
 }
 console.log(uppercaseStr); // Output: JAVASCRIPT
+
+
 
 //4.Check if a string contains a specific substring:
 
@@ -58,6 +61,7 @@ for (let i = str6.length - 1; i >= 0; i--) {
 }
 console.log(reversed); // Output: olleh
 
+
 // 6.Count the number of vowels in a string:
 
 function countVowels(str) {
@@ -74,6 +78,7 @@ function countVowels(str) {
 const str7 = "JavaScript";
 console.log(countVowels(str7)); // Output: 3
 
+
 // 7.Remove all white spaces from a string:
 
 const str8 = "   JavaScript   is   fun   ";
@@ -84,6 +89,8 @@ for (let char of str8) {
     }
 }
 console.log(trimmed); // Output: JavaScriptisfun
+
+
 
 // 8.Check if a string is a palindrome:
 
@@ -102,6 +109,8 @@ function isPalindrome(str) {
 
 const str9 = "radar";
 console.log(isPalindrome(str9)); // Output: true
+
+
 
 //9.Extract the domain name from a URL:
 
@@ -125,6 +134,7 @@ function extractDomain(url) {
 const url = "https://www.example.com/path/to/page";
 console.log(extractDomain(url));
 
+
 //10.Write a function to capitalize the first letter of each word in a sentence.
 let str = 'en dc fb'
 let f = str[0].toUpperCase() // E
@@ -138,4 +148,3 @@ for(let i=0;i<str.length-1;i++){
 }
 // En Dc Fb
 console.log(f+bag)
-
