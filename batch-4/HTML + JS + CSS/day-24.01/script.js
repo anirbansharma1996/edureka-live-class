@@ -47,7 +47,6 @@ l_form.addEventListener("submit", (e) => {
     ? (l_message.innerText = `login success with token ${num}`)
     : (l_message.innerText = "invalid");
 });
-
 //-------------------------------
 let body = document.getElementById("body");
 let theme = document.getElementById("theme");
