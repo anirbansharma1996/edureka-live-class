@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Madimi+One&family=Truculenta:opsz,wght@12..72,100..900&display=swap");
+
+html,
+body {
+  margin: 0;
+  font-family: "Truculenta", sans-serif;
+}
+/********* NAVBAR CSS***********/
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  background-color: orangered;
+}
+.nav-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.nav-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.nav-info {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+.mobile-nav {
+  display: none;
+}
+.mobile-nav .btn {
+  font-size: 30px;
+  color: white;
+}
+.offcanvas-bottom {
+  height: 300px;
+  font-size: 20px;
+}
+/* nav p:last-child{
+    border: 1px solid;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.178);
+} */
+
+/********* HOME Category************/
+.category {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 90%;
+  margin: auto;
+  margin-top: 1%;
+}
+/*************** DISH O THE DAY **************/
+.dish-of-the-day {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  margin-top: 4%;
+}
+
+.dish-details {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  margin-top: 4%;
+}
+.ingredients {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+.ingredients > div {
+  width: 100%;
+  margin-left: -1rem;
+}
+/*********** menu-letter **************/
+.menu-letter {
+  display: grid;
+  grid-template-columns: repeat(26, 1fr);
+  grid-template-rows: auto;
+  gap: 5px;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+.menu-letter > p {
+  padding: 5px;
+  border: 1px dashed;
+  cursor: pointer;
+}
+.menu-letter > p:hover {
+  background-color: orangered;
+  color: rgb(255, 255, 255);
+}
+
+/************/
+/* media q */
+/************/
+/* TAB CSS */
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: block;
+  }
+  .nav-info {
+    display: none;
+  }
+  .dish-of-the-day {
+    display: flex;
+    flex-direction: column;
+  }
+  .dish-details {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    margin-top: 4%;
+  }
+  .category {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+  }
+  .menu-letter {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: auto;
+    gap: 5px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+}
+/* MOBILE CSS */
+@media (max-width: 482px) {
+  .mobile-nav {
+    display: block;
+  }
+  .nav-info {
+    display: none;
+  }
+  .dish-of-the-day {
+    display: flex;
+    flex-direction: column;
+  }
+  .category {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    width: 90%;
+    margin: auto;
+    margin-top: 5%;
+  }
+  .menu-letter {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: auto;
+    gap: 5px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+}
