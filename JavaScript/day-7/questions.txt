@@ -1,0 +1,11 @@
+1. How can you check if a string is empty?
+2. Write a program to replace all occurrences of a character in a string with another character.
+3. How would you determine if two strings are anagrams of each other?
+4. Write a function to remove all special characters from a string.
+5. How do you convert a string to a number in JavaScript?
+6. Write a program to find the index of the first occurrence of a character in a string.
+7. How can you split a string into an array of substrings based on a delimiter?
+8. Write a function to add a string with a specified character to a certain length.
+9. How can you check if a string contains only digits?
+10. Write a program to sort the characters of a string alphabetically
+

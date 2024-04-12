@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // if , else if and else statement
 //1.check if a number is even or odd
 const number = 4567575;
@@ -109,3 +110,24 @@ if (arr[1]===4) {
 else{
     console.log('not found')
 }
+=======
+//1
+console.log(2+2)
+//2
+window.alert("do you want to logout")
+//--- extra ---
+let response = window.confirm('do you want to delete this item')
+ console.log(response)
+let data = window.prompt('enter your name')
+ console.log(data)
+//3
+document.write("hello world")
+//4
+const tag = document.getElementById("result")
+tag.innerHTML="Hello World"
+
+
+
+
+
+>>>>>>> 7a5dcb7f25b98065a53ad6244b0e61d326635a56

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Noto+Sans+KR:wght@100..900&family=Truculenta:opsz,wght@12..72,100..900&display=swap');
+
+*{
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+
+.info-math {
+  height: 100px;
+  width: 61.3231552163%;
+  background-color: skyblue;
+}
+
+.success-math {
+  height: 100px;
+  width: 200px;
+  background-color: rgb(21, 255, 0);
+}
+
+.failed-math {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(238, 20, 0);
+}/*# sourceMappingURL=style.css.map */

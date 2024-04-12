@@ -1,0 +1,29 @@
+html,
+body {
+  font-family: monospace;
+  margin: 0;
+}
+
+.parent {
+  position: relative;
+  width: 300px;
+}
+.parent img {
+  height: 300px;
+  width: 300px;
+}
+.parent .info {
+  position: absolute;
+  top: 0;
+  height: 300px;
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.572);
+  color: white;
+  display: none;
+}
+
+.parent:hover .info {
+  display: flex block;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,86 @@
+html,
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+nav {
+  border: 2px solid aqua;
+  background-color: aqua;
+  margin-bottom: 10px;
+  
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style-type: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.parent {
+  /* border: 3px solid; */
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  /* flex-direction: row-reverse; */
+}
+
+.child,
+.child-grid {
+  border: 1px solid;
+  width: 60px;
+  height: 60px;
+  background-color: red;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.child:first-child,
+.child-grid:first-child {
+  background-color: rgb(205, 241, 42);
+}
+.child:nth-child(2),
+.child-grid:nth-child(2) {
+  background-color: green;
+}
+.child:nth-child(3),
+.child-grid:nth-child(3) {
+  background-color: rgb(53, 198, 246);
+}
+.child:nth-child(4),
+.child-grid:nth-child(4) {
+  background-color: rgb(35, 14, 132);
+}
+.child:nth-child(5),
+.child-grid:nth-child(5) {
+  background-color: rgb(222, 30, 59);
+}
+.child:last-child,
+.child-grid:last-child {
+  background-color: rgb(0, 111, 128);
+}
+
+.root > div {
+  border: 2px solid red;
+}
+
+.parent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
+h1,
+h2 {
+  border: 1px solid blue;
+  display: inline;
+}
+h3 {
+  visibility: hidden;
+}

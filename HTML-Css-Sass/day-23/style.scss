@@ -1,0 +1,54 @@
+@mixin theme($primary-theme: red) {
+  background-color: $primary-theme;
+  height: 200px;
+  width: 200px;
+}
+
+.info {
+  @include theme($primary-theme: blue);
+}
+.success {
+  @include theme($primary-theme: green);
+}
+.failed {
+  @include theme;
+}
+
+%design {
+  margin-bottom: 2%;
+  height: 200px;
+  width: 200px;
+}
+.info-extend {
+  @extend %design;
+  background-color: aqua;
+}
+.failed-extend {
+  @extend %design;
+  background-color: red;
+}
+.success-extend {
+  @extend %design;
+  background-color: greenyellow;
+}
+
+
+$base-width: 100px;
+$base-height: 100px;
+@use "sass:math";
+
+.info-math {
+  height: $base-height;
+  width: math.div(482px, 786px)*100%;
+  background-color: skyblue;
+}
+.success-math {
+  height: $base-height;
+  width: $base-width + 100px;
+  background-color: rgb(21, 255, 0);
+}
+.failed-math {
+  height: $base-height;
+  width: $base-width;
+  background-color: rgb(238, 20, 0);
+}

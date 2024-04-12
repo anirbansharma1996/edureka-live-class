@@ -1,0 +1,36 @@
+.main-one {
+  background-color: red;
+  height: 60px;
+  font-family: Helvetica, sans-serif;
+}
+
+.main-two {
+  background-color: red;
+  height: 30px;
+}
+
+.info {
+  background-color: rgb(0, 208, 255);
+  color: rgb(7, 7, 7);
+  height: 40px;
+}
+
+.alert {
+  background-color: red;
+  color: rgb(7, 7, 7);
+  height: 40px;
+}
+
+.success {
+  background-color: green;
+  color: rgb(7, 7, 7);
+  height: 40px;
+}
+
+.box {
+  width: 120px;
+  height: 70px;
+  padding: 20px;
+  margin: 50px;
+  border: 1px solid black;
+}/*# sourceMappingURL=style.css.map */

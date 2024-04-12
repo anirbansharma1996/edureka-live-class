@@ -1,0 +1,32 @@
+
+/* position */
+.parent{
+    position: relative;
+    height: 50vh;
+    width: 50vw;
+    background-image: linear-gradient(red,yellow)
+}
+
+.child{
+    height: 40px;
+    width: 40px;
+    background-color: blue;
+    color: white;
+    position: absolute;
+    top: 10%;
+}
+
+/* root element in css */
+
+:root {
+  --primary-color: rgb(0, 128, 2);
+  --text-color: white;
+}
+
+.main {
+  background-color: var(--primary-color);
+}
+.main-2 {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}

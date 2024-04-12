@@ -1,0 +1,32 @@
+@use "pritam";
+
+html,
+body {
+  font-family: pritam.$primary-font;
+  margin: 0;
+}
+
+.parent {
+  position: relative;
+  width: pritam.$primary-width;
+  img {
+    height: pritam.$primary-height;
+    width: pritam.$primary-width;
+  }
+  .info {
+    position: absolute;
+    top: 0;
+    height: pritam.$primary-height;
+    width: pritam.$primary-width;
+    background-color: rgba(0, 0, 0, 0.572);
+    color: white;
+    display: none;
+  }
+}
+.parent:hover {
+  .info {
+      display: flex block;
+      justify-content: center;
+      align-items: center;
+  }
+}

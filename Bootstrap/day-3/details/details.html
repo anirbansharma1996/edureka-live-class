@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="./details.css" />
+    <title>Food Panda | Details</title>
+  </head>
+  <body>
+    <!-- navbar starts here -->
+    <nav>
+      <div>
+        <a href="../home/index.html"><h2 class="display-6">Food Panda</h2></a>
+      </div>
+      <div class="nav-items">
+        <ul>
+          <a href="../home/index.html"
+            ><li><i class="bi bi-house"></i> Home</li></a
+          >
+          <a href="../checkout/checkout.html"
+            ><li><i class="bi bi-cart"></i> Checkout</li></a
+          >
+          <a href=""
+            ><li><i class="bi bi-person"></i>Register</li></a
+          >
+        </ul>
+      </div>
+      <div class="mobile-nav">
+        <button
+          class="btn"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+        >
+          <i class="bi bi-list"></i>
+        </button>
+
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasRight"
+          aria-labelledby="offcanvasRightLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">FOOD PANDA</h5>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul>
+              <a href="./index.html"
+                ><li><i class="bi bi-house"></i> Home</li></a
+              >
+              <a href="../checkout/checkout.html"
+                ><li><i class="bi bi-cart"></i> Cart</li></a
+              >
+              <a href="../registration/Login.html"
+                ><li><i class="bi bi-person"></i>Register</li></a
+              >
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- navbar ends here -->
+
+    <!-- item details start here -->
+    <div class="conatiner m-5">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-3">
+            <img
+              src="https://w0.peakpx.com/wallpaper/805/956/HD-wallpaper-food-delicious-food-food-holidays-indian-indian-food-pav-bhaji-spicy-food-street-food.jpg"
+              class="img-fluid rounded-start"
+              alt="item"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Pav Bhaji</h5>
+              <p>Mumbai | India</p>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+                repudiandae laboriosam nulla numquam, eum quis beatae rem enim
+                deserunt modi mollitia? Aperiam suscipit id maxime delectus sed?
+                Quod aut optio molestias pariatur dolores ipsa odit voluptas
+                tenetur libero hic. Aperiam ratione optio, quam, eos blanditiis
+                odio nobis explicabo molestiae architecto eaque inventore?
+                Officiis molestiae dolorem quibusdam necessitatibus fugiat
+                doloribus at incidunt veniam, accusantium accusamus excepturi.
+                Adipisci, dolor illo recusandae ipsa necessitatibus voluptatum
+                delectus molestiae corrupti exercitationem dignissimos facilis
+                veniam facere sequi, harum praesentium iure laboriosam
+                cupiditate animi? Soluta sunt autem voluptate minus fugit
+                sapiente voluptatum libero. Asperiores vero eaque molestias.
+              </p>
+              <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p>
+
+              <button
+                class="btn btn-warning"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasBottom"
+                aria-controls="offcanvasBottom"
+              >
+                Add To Cart
+              </button>
+
+              <!-- offcanvas for cart will open here -->
+
+              <div
+                class="offcanvas offcanvas-bottom"
+                tabindex="-1"
+                id="offcanvasBottom"
+                aria-labelledby="offcanvasBottomLabel"
+              >
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasBottomLabel">
+                    <i class="bi bi-cart"></i> &nbsp;CART
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close text-reset"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <hr />
+                <div class="offcanvas-body">
+                  <div class="cart">
+                    <img
+                      src="https://w0.peakpx.com/wallpaper/805/956/HD-wallpaper-food-delicious-food-food-holidays-indian-indian-food-pav-bhaji-spicy-food-street-food.jpg"
+                      alt=""
+                    />
+                    <p>Pav Bhaji</p>
+                    <h5>$10</h5>
+                    <button
+                      class="btn btn-danger"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      <i class="bi bi-trash3"></i>
+                    </button>
+                    <!-- Modal -->
+                    <div
+                      class="modal fade"
+                      id="exampleModal"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                              Do You want to remove this Item ?
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              No
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              data-bs-dismiss="modal"
+                            >
+                              Yes
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ------------------------------ -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- item details ends here -->
+    <hr class="m-5" />
+    <!-- footer starts here  -->
+    <footer class="container footer m-5">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">LOGO</div>
+        <div class="col-md-3 col-sm-6">ABOUT</div>
+        <div class="col-md-3 col-sm-6">SERVICES</div>
+        <div class="col-md-3 col-sm-6">ICONS</div>
+      </div>
+    </footer>
+
+    <!-- footer ends here -->
+    <hr class="m-2" />
+    <p class="text-end m-4">&copy; Anirban 2024</p>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

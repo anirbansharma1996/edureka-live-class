@@ -1,0 +1,43 @@
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 10px;
+}
+.child {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blueviolet;
+  color: white;
+}
+
+
+/* FOR TAB SCREEN */
+@media (max-width: 768px) {
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+  }
+  .child {
+    background-color: aquamarine;
+    color: black;
+  }
+}
+
+/* FOR MOBILE SCREEN */
+@media (max-width: 482px) {
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+  }
+  .child {
+    background-color: red;
+    color: white;
+  }
+}
