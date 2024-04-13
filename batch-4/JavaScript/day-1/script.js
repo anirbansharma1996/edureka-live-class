@@ -1,3 +1,5 @@
+
+
 // variable 
 var user_name = "Anirban"
 var phone_number = 8976543211
@@ -112,8 +114,8 @@ console.log(b)
 const c1 = 9
 
 
-
 Host()
+
 function Host(){
   console.log('host function ....')
 }
