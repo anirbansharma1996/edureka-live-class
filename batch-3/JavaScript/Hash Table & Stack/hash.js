@@ -35,3 +35,20 @@ table.add("age",21)
 console.log(table.get('age')) 
 console.log(table.print())
 
+//  
+let arr = ['a','b','c']
+let r = new Map()
+arr.forEach((el)=>{
+     console.log(r.get(el))
+})
+// get , set , delete
+let arr1 = ['a','b','c',"a",'b']
+let r1 = new Map()
+arr1.forEach((el)=>{
+     if(r1.get(el) === undefined){
+        r1.set(el, (r1.get(el)||0)+1)
+     }else{
+        r1.set(el, (r1.get(el)+1))
+     }
+})
+console.log(r1)
