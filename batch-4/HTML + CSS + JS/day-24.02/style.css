@@ -1,0 +1,25 @@
+#mouse-div{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+}
+#mode{
+    height: 100px;
+    margin: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+img{
+    width: 40%;
+}
+span{
+    font-size: 20px;
+    font-weight: 800;
+}
+#like-button{
+    background-color: white;
+    border: 0;
+    font-size: large;
+    cursor: pointer;
+}
