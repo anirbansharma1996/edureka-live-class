@@ -46,7 +46,6 @@ db.products.aggregate([
       averagePrice: { $avg: "$price" }
     }
   },
-  
   // Sort by average price in descending order
   { $sort: { averagePrice: -1 } }
 ]);
@@ -81,6 +80,26 @@ db.products.aggregate([
       _id: "$category",
       averagePrice: { $avg: "$price" },
       totalQuantity: { $sum: "$quantity" }
+    }
+  }
+]);
+
+:::::::: Total profit ::::::::
+
+db.products.aggregate([
+  { $match: { status: "out of stock" } },
+  {
+    $group: {
+      _id: "$color",
+      totalPrice: { $sum: "$price" },
+      totalQuantity: { $sum: 1 } 
+    }
+  },
+  {
+    $project: {
+      _id: 1,
+      totalPrice: 1,
+      totalProfit: { $multiply: ["$totalPrice", "$totalQuantity"] }
     }
   }
 ]);
