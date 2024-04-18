@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="parent">
+        <div class="form">
+            <form id="user_form">
+                <input type="url" placeholder="user image" id="user_image">
+              <input type="text" placeholder="user name" id="user_name" />
+              <input type="email" placeholder="user email" id="user_email" />
+              <input type="tel" placeholder="user phonenumber" id="user_phonenumber" />
+              <select id="user_gender">
+                <option value="" selected disabled>Choose...</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="other">other</option>
+              </select>
+              <textarea
+                id="user_address"
+                cols="40"
+                rows="5"
+                placeholder="user address"
+              ></textarea>
+              <input type="submit" />
+            </form>
+        </div>
+        <div id="root"></div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
