@@ -56,7 +56,7 @@ function Showdata(arr) {
     image.src = el.image;
 
     let name = document.createElement("h4");
-    name.innerText = `#${index+1} : ${el.name}`;
+    name.innerText = `#${index + 1} : ${el.name}`;
     let email = document.createElement("p");
     email.innerText = `Email : ${el.email}`;
     let gender = document.createElement("p");
@@ -71,6 +71,8 @@ function Showdata(arr) {
 
     let edit = document.createElement("button");
     edit.innerText = "Edit User";
+  
+
     let remove = document.createElement("button");
     remove.innerText = "Delete User";
     remove.addEventListener("click", () => {
@@ -85,6 +87,8 @@ function Showdata(arr) {
 }
 
 function RemoveUser(index) {
-   user_array = user_array.filter((el,ind)=> ind !== index);
+  user_array = user_array.filter((el, ind) => ind !== index);
   Showdata(user_array);
 }
+
+
