@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>fake store</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <div id="root"></div>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="parent">
+        <!-- mobile side bar -->
+      <!-- <div class="mobile-sidebar">
+        <button id="mobile-sidebar-toggle">&#xF479;</button>
+        <div id="mobile-sidebar-inside">
+          <h3 id="product-count"></h3>
+          <hr />
+          <h2>Sort By Price</h2>
+          <select id="sort-by-price">
+            <option value="" selected disabled>sort</option>
+            <option value="h-l">price high to low</option>
+            <option value="l-h">price low to high</option>
+          </select>
+          <hr />
+          <h2>Filter By Category</h2>
+          <div id="category-1" class="category-group">Men's clothing</div>
+          <div id="category-2" class="category-group">Women's clothing</div>
+          <div id="category-3" class="category-group">Electronics</div>
+          <div id="category-4" class="category-group">Jewelery</div>
+          <hr />
+          <button id="reset-btn">Reset</button>
+        </div>
+      </div> -->
+       <!-- laptop sidebar -->
+      <div class="sidebar">
+        <h3 id="product-count">Product Count : </h3>
+        <hr />
+        <h2>Sort By Price</h2>
+        <select id="sort-by-price">
+          <option value="" selected disabled>sort</option>
+          <option value="h-l">price high to low</option>
+          <option value="l-h">price low to high</option>
+        </select>
+        <hr />
+        <h2>Filter By Category</h2>
+        <div id="category-1" class="category-group">Men's clothing</div>
+        <div id="category-2" class="category-group">Women's clothing</div>
+        <div id="category-3" class="category-group">Electronics</div>
+        <div id="category-4" class="category-group">Jewelery</div>
+        <hr />
+        <button id="reset-btn">Reset</button>
+      </div>
+      <!-- root element -->
+      <div id="root"></div>
+    </div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

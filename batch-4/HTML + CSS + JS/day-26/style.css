@@ -1,9 +1,69 @@
+html,body{
+  margin: 0;
+}
+
+.parent{
+  display: flex;
+  height: 95vh;
+  overflow: auto;
+  padding: 5px;
+  gap: 7px;
+}
+.mobile-sidebar{
+  display: none;
+  position: relative;
+}
+#mobile-sidebar-inside{
+  display: none;
+  width: 70%;
+  margin: auto;
+  border: 1px solid;
+  text-align: left;
+  padding: 5px 20px;
+}
+.sidebar{
+  width: 20%;
+  margin: auto;
+  height: 95vh;
+  border: 1px solid rgb(43, 0, 255);
+  position: sticky;
+  top: 0;
+  padding:  0 10px;
+}
+ select{
+  padding: 10px;
+  width: 100%;
+  font-size: 20px;
+}
+.category-group{
+  border: 1px solid;
+  padding: 15px 5px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+.category-group:hover{
+  background-color: black;
+  color: white;
+}
+#reset-btn{
+  width: 100%;
+  padding: 10px;
+  background-color: red;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#reset-btn:hover{
+  background-color: rgb(198, 5, 5);
+}
+
 #root {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   gap: 7px;
-  width: 90%;
+  width: 80%;
   margin: auto;
 }
 .main {
@@ -28,4 +88,35 @@
     width: 100%;
     padding: 5px;
     cursor: pointer;
+}
+
+@media (max-width:768px) {
+  .parent{
+    flex-direction: column;
+  }
+  .mobile-sidebar{
+    display: block;
+    text-align: end;
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    position: sticky;
+    top: 0;
+  }
+  .sidebar{
+    display: none;
+  }
+  #root {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 7px;
+    width: 90%;
+    margin: auto;
+  }
+  #mobile-sidebar-inside{
+   position: absolute;
+  background-color: white;
+  color: black;
+  }
 }
