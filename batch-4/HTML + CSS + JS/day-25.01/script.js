@@ -71,7 +71,9 @@ function Showdata(arr) {
 
     let edit = document.createElement("button");
     edit.innerText = "Edit User";
-  
+    edit.addEventListener("click",()=>{
+      EditUser(index)
+    })
 
     let remove = document.createElement("button");
     remove.innerText = "Delete User";
@@ -92,3 +94,15 @@ function RemoveUser(index) {
 }
 
 
+function EditUser(index){
+  let new_name = window.prompt("Enter new Name")
+  if(new_name !== null){
+    if(new_name.trim() !==""){
+      user_array[index].name = new_name
+      Showdata(user_array)
+    }
+  }else{
+    alert("Enter Valid Name")
+  }
+
+}
