@@ -1,0 +1,10 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.hero{
+    height: 30vh;
+    background-color: teal;
+}
