@@ -1,0 +1,5 @@
+1. create a folder 
+2. create server.js file
+3. npm init -y
+4. npm i express nodemon
+5. create .gitignore & keep node_modules in it
