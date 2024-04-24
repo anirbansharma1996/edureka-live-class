@@ -1,0 +1,30 @@
+#cart{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    gap: 7px;
+    width: 90%;
+    margin: auto;
+}
+img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}
+.cart_main{
+    border:  1px dashed;
+    padding: 10px;
+    text-align: center;
+
+}
+@media (max-width:768px) {
+    #cart{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto;
+        gap: 7px;
+        width: 90%;
+        margin: auto;
+    }
+    
+}
