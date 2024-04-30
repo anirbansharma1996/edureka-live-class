@@ -31,6 +31,25 @@ img{
 s{
     color: grey;
 }
+.sort-filter{
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+}
+select{
+   padding: 10px;
+}
+input{
+    padding: 10px;
+    width: 60%;
+}
+button{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
 
 @media (max-width:768px){
     #root{

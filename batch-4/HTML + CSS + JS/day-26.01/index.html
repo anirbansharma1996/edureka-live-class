@@ -7,6 +7,24 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="sort-filter">
+        <h3 id="p_count">Product Count : 0</h3>
+        <select id="sort-data">
+            <option value="" selected disabled>SORT BY PRICE</option>
+            <option value="l-h">LOW TO HIGH</option>
+            <option value="h-l">HIGH TO LOW</option>
+        </select>
+        <select id="filter-data">
+            <option value="" selected disabled>FILTER BY CATEGORY</option>
+            <option value="men's clothing">MEN</option>
+            <option value="women's clothing">WOMEN</option>
+            <option value="electronics">ELECTRONIC</option>
+            <option value="jewelery">JEWELLEY</option>
+        </select>
+        
+        <input type="text" placeholder="Search Products" id="search">
+        <button id="reset">RESET</button>
+    </div>
     <div id="root"></div>
     <script src="./script.js"></script>
 </body>
