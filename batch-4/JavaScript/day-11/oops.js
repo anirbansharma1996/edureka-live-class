@@ -219,3 +219,53 @@ myAccount.withdraw(200); // Outputs: Withdrawn 200. New balance: 1300
 myAccount.checkBalance(); // Outputs: Account balance: 1300
 
 //In this example, the users of the BankAccount class don't need to know how deposit, withdraw, or check balance operations are implemented internally. They only need to know how to use these functionalities through the provided interface. This abstraction allows for easier maintenance and modification of the codebase, as the internal details can change without affecting the users' interactions.
+
+//JavaScript: Notes Store
+//In this challenge, the task is to create a class NotesStore. The class will manage a collection of notes, with each note having a state and a name. Valid states for notes are: 'completed', 'active', and 'others'.
+//All other states are invalid.The class must have following methods:
+//1. addNote(state, name): adds a note with the given name and state to the collection. In addition to that:
+//• If the passed name is empty, then it throws an Error with the message 'Name cannot be empty'.
+//• If the passed name is non-empty but the given state is not a valid state for a note,then it throws an Error with the message 'Invalid state (state)'.
+//2. getNotes(state): returns an array of names of notes with the given state added so far.The names are returned in the order the corresponding notes were added. In addition to that:
+//• If the given state is not a valid note state, then it throws an Error with themessage 'Invalid state ({state})'.
+//• If no note is found in this state, it returns an empty array.
+
+class Note {
+  constructor() {
+    this.notes = [];
+  }
+  addNotes(state, name) {
+    if (name === "") {
+      throw new Error("Name can not be empty");
+    }
+    if (state !== "completed" && state !== "active" && state !== "others") {
+      throw new Error(`Invalid state ${state}`);
+    }
+    this.notes.push({ state, name });
+  }
+  getNotes(state){
+    if (state !== "completed" && state !== "active" && state !== "others") {
+        throw new Error(`Invalid state ${state}`);
+      }
+    
+      const f_notes = this.notes.filter((el)=>el.state === state)
+      return f_notes.map((el)=>el.name)
+  }
+  showNotes(){
+    return this.notes
+  }
+}
+
+const n1 = new Note()
+
+n1.addNotes('active','Note 1')
+n1.addNotes('completed','Note 2')
+n1.addNotes('others',"Note 3")
+n1.addNotes('completed','Note 4')
+n1.addNotes('active','Note 5')
+n1.addNotes('active','Note 6')
+
+console.log(n1.showNotes()) 
+
+const d = n1.getNotes("active")
+console.log(d)
