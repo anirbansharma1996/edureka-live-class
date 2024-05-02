@@ -1,0 +1,19 @@
+backend/
+  |- models/
+  |   |- Auth.js
+  |   |- Blog.js
+  |- controllers/
+  |   |- authController.js
+  |   |- blogController.js
+  |- routes/
+  |   |- authRoutes.js
+  |   |- blogRoutes.js
+  |- middleware/
+  |   |- authMiddleware.js
+    |- utils/
+  |   |- database.js
+  |- server.js
+
+  npm i express nodemon mongoose jsonwebtoken bcrypt dotenv
+
+server > database > model > controllers > router >+ server
