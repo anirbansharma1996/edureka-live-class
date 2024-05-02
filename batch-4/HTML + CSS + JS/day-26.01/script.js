@@ -103,3 +103,24 @@ reset.addEventListener("click", () => {
   GetData();
 });
 
+
+
+function debounce(fn, delay) {
+  let id;
+  return (...args) => {
+    clearTimeout(id);
+    id = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+}
+
+search.addEventListener(
+  "input",
+  debounce((e) => {
+    const search_data = data.filter((el) =>
+      el.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    ShowData(search_data);
+  }, 500)
+);
