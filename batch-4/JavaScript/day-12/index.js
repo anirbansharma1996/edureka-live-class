@@ -7,6 +7,7 @@ const p2 = {
     l:"Saha"
 }
 function FullNameC(greet){
+
     console.log(`${greet} - ${this.f} - ${this.l}`)
 }
 
@@ -21,6 +22,7 @@ FullNameA.apply(p1,["hi","boss"])
 FullNameA.apply(p2,["hi","there"])
 //---------------------
 function FullNameB(greet){
+  {}
     console.log(`${greet} - ${this.f} - ${this.l}`)
 }
 const f1 = FullNameB.bind(p1)
@@ -78,6 +80,7 @@ const throttleFN = throttle(ScrollToPrint, 800);
 document.addEventListener("scroll", () => {
   throttleFN();
 });
+
 let count = 0;
 function ScrollToPrint() {
   count += 1;

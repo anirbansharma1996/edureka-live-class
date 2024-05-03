@@ -1,0 +1,13 @@
+.signup-form,
+.login-form {
+  width: 60%;
+  margin: auto;
+  border: 1px solid;
+  padding: 20px;
+  margin-top: 10vh;
+}
+input {
+  padding: 10px;
+  margin: 5px;
+  width: 90%;
+}
