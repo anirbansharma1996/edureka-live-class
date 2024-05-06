@@ -1,19 +1,30 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../api/baseurl";
-import { useNavigate } from "react-router-dom";
+import { TokenContext } from "../../context/Authcontext";
 
-export default function Blogs() {
-  const [blogs, setBlogs] = useState([]);
+export default function Userblog() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { token } = useContext(TokenContext);
+
+  const [sblog, setSblog] = useState([]);
   const [message, setMessage] = useState("");
   const [isloading, setIsloading] = useState(false);
 
+  if (!token) {
+    navigate("/login");
+  }
+
   useEffect(() => {
-    const fetchBlog = async () => {
+    const fetchSoloBlog = async () => {
       try {
         setIsloading(true);
-        const res = await axios.get(`${BASE_URL}/blogs`);
-        setBlogs(res.data);
+        const res = await axios.get(`${BASE_URL}/blog/user/${id}`, {
+          headers: { Authorization: token },
+        });
+        setSblog(res.data);
         setIsloading(false);
         setMessage("")
       } catch (error) {
@@ -23,14 +34,15 @@ export default function Blogs() {
         );
       }
     };
-    fetchBlog();
-  }, []);
+    fetchSoloBlog();
+  }, [message]);
 
   return (
     <div>
+      {isloading && <h1>Loading...</h1>}
       {message && <h1>{message}</h1>}
       <div>
-        {blogs?.reverse().map((el) => (
+        {sblog?.reverse().map((el) => (
           <BlogCard props={el} />
         ))}
       </div>
@@ -41,17 +53,11 @@ export default function Blogs() {
 export function BlogCard({ props }) {
   const { author, title, content, date } = props;
   const d = new Date(date).toLocaleString();
-  const navigate = useNavigate();
 
   return (
     <div>
       <h3>{title}</h3>
-      <h5
-        style={{ cursor: "pointer" }}
-        onClick={() => navigate(`/user/${author._id}`)}
-      >
-        {author.username}
-      </h5>
+      <h5>{author.username}</h5>
       <p>{content}</p>
       <p>{d}</p>
       <hr />
