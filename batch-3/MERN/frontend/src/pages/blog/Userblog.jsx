@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useContext, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { BASE_URL } from "../../api/baseurl";
 import { TokenContext } from "../../context/Authcontext";
 
 export default function Userblog() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { token } = useContext(TokenContext);
+  const { token, decode } = useContext(TokenContext);
 
   const [sblog, setSblog] = useState([]);
   const [message, setMessage] = useState("");
@@ -26,7 +26,7 @@ export default function Userblog() {
         });
         setSblog(res.data);
         setIsloading(false);
-        setMessage("")
+        setMessage("");
       } catch (error) {
         setIsloading(false);
         setMessage(
@@ -36,9 +36,12 @@ export default function Userblog() {
     };
     fetchSoloBlog();
   }, [message]);
-
+  console.log(sblog);
   return (
     <div>
+      <span>
+        <Link to="/"> Blog</Link> / <b>{sblog[0]?.author?.username}'s blogs</b>
+      </span>
       {isloading && <h1>Loading...</h1>}
       {message && <h1>{message}</h1>}
       <div>
@@ -62,5 +65,6 @@ export function BlogCard({ props }) {
       <p>{d}</p>
       <hr />
     </div>
+    
   );
 }

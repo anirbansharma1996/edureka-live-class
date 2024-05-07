@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { TokenContext } from "../../context/Authcontext";
 import { BASE_URL } from "../../api/baseurl";
 
@@ -35,6 +36,10 @@ export default function Postblog() {
 
   return (
     <div>
+      <span>
+        {" "}
+        <Link to="/user">User</Link> /<u> Write</u>
+      </span>
       <h3>WRITE YOUR BLOG HERE</h3>
       <p>{message}</p>
       <form onSubmit={handleSubmit}>
@@ -55,9 +60,8 @@ export default function Postblog() {
           onChange={handleInput}
           required
         ></textarea>
-         <input type="submit" value="Post" />
+        <input type="submit" value="Post" />
       </form>
-      
     </div>
   );
 }
