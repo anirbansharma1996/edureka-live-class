@@ -29,7 +29,7 @@ export default function Blogs() {
   return (
     <div>
       {message && <h1>{message}</h1>}
-      <div>
+      <div className="blogs-parent">
         {blogs?.reverse().map((el) => (
           <BlogCard props={el} />
         ))}
@@ -44,7 +44,7 @@ export function BlogCard({ props }) {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="blogs-child">
       <h3>{title}</h3>
       <h5
         style={{ cursor: "pointer" }}
@@ -54,7 +54,6 @@ export function BlogCard({ props }) {
       </h5>
       <p>{content}</p>
       <p>{d}</p>
-      <hr />
     </div>
   );
 }
