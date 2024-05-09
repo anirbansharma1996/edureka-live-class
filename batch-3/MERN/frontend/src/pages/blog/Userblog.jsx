@@ -44,7 +44,7 @@ export default function Userblog() {
       </span>
       {isloading && <h1>Loading...</h1>}
       {message && <h1>{message}</h1>}
-      <div>
+      <div className="blogs-parent">
         {sblog?.reverse().map((el) => (
           <BlogCard props={el} />
         ))}
@@ -54,17 +54,16 @@ export default function Userblog() {
 }
 
 export function BlogCard({ props }) {
-  const { author, title, content, date } = props;
+  const { author, image, title, content, date } = props;
   const d = new Date(date).toLocaleString();
 
   return (
-    <div>
+    <div className="blogs-child">
+      {image && <img src={`../upload/${image}`} width={"100%"} alt={title} />}
       <h3>{title}</h3>
       <h5>{author.username}</h5>
       <p>{content}</p>
       <p>{d}</p>
-      <hr />
     </div>
-    
   );
 }

@@ -37,7 +37,6 @@ export default function User() {
 
   return (
     <div>
-      
       <h1>Welcome {decode.name}</h1>
       <p>
         Registered Email : <b>{decode.email}</b>
@@ -55,7 +54,7 @@ export default function User() {
 }
 
 export function UserBlogs({ props, fetchData }) {
-  const { _id, title, content, date } = props;
+  const { _id, title, image, content, date } = props;
   const { token } = useContext(TokenContext);
   const [editing, setEditing] = useState(false);
   const [newblog, setNewblog] = useState({ title: title, content: content });
@@ -105,6 +104,9 @@ export function UserBlogs({ props, fetchData }) {
 
   return (
     <div className="blogs-child">
+      {!editing && image && (
+        <img src={`../upload/${image}`} width={"100%"} alt={title} />
+      )}
       {editing ? (
         <input
           type="text"

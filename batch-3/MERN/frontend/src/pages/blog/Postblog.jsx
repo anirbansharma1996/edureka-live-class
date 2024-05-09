@@ -10,17 +10,30 @@ export default function Postblog() {
   const [pblog, setPblog] = useState({
     title: "",
     content: "",
+    image: null,
   });
 
   const handleInput = (e) => {
     const { name, value } = e.target;
     setPblog({ ...pblog, [name]: value });
   };
+  const handleImageInput = (e) => {
+    setPblog({ ...pblog, image: e.target.files[0] });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${BASE_URL}/blog`, pblog, {
-        headers: { Authorization: token },
+      const formdata = new FormData();
+      formdata.append("title", pblog.title);
+      formdata.append("content", pblog.content);
+      formdata.append("image", pblog.image);
+
+      const res = await axios.post(`${BASE_URL}/blog`, formdata, {
+        headers: {
+          Authorization: token,
+          "Content-Type": "multipart/form-data",
+        },
       });
       if (res.status === 201) {
         setMessage(res.data.message);
@@ -60,6 +73,12 @@ export default function Postblog() {
           onChange={handleInput}
           required
         ></textarea>
+        <input
+          type="file"
+          accept="image/*"
+          required
+          onChange={handleImageInput}
+        />
         <input type="submit" value="Post" />
       </form>
     </div>

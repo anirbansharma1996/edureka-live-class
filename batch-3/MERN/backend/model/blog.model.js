@@ -14,6 +14,9 @@ const BlogSchema = new Schema({
     ref: "blog-auth",
     required: true,
   },
+  image: {
+    type: String,
+  },
   date: {
     type: String,
     required: true,

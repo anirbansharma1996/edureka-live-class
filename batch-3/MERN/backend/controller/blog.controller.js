@@ -1,4 +1,5 @@
 const Blog = require("../model/blog.model.js");
+const path = require("path");
 
 //READ -> GET
 const getAllBlogs = async (req, res) => {
@@ -30,7 +31,16 @@ const createBlog = async (req, res) => {
     if (!author) {
       return res.status(404).send("invalid user");
     }
-    const blog = new Blog({ title, content, author, date: new Date() });
+    const imagePath = req.file.path;
+    const imageUrl = path.basename(imagePath);
+
+    const blog = new Blog({
+      title,
+      content,
+      author,
+      image: imageUrl,
+      date: new Date(),
+    });
     await blog.save();
     res.status(201).send({ message: "Blog Posted Successfully" });
   } catch (error) {

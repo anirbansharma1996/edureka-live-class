@@ -15,7 +15,7 @@ export default function Blogs() {
         const res = await axios.get(`${BASE_URL}/blogs`);
         setBlogs(res.data);
         setIsloading(false);
-        setMessage("")
+        setMessage("");
       } catch (error) {
         setIsloading(false);
         setMessage(
@@ -39,12 +39,13 @@ export default function Blogs() {
 }
 
 export function BlogCard({ props }) {
-  const { author, title, content, date } = props;
+  const { author, image, title, content, date } = props;
   const d = new Date(date).toLocaleString();
   const navigate = useNavigate();
 
   return (
     <div className="blogs-child">
+      {image && <img src={`../upload/${image}`} style={{ width: "100%" }} alt={title} />}
       <h3>{title}</h3>
       <h5
         style={{ cursor: "pointer" }}
