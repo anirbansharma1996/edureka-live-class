@@ -11,12 +11,23 @@ export default function User() {
   if (!decode) {
     window.location.href = "/login";
   }
+
   const handleLogout = () => {
     localStorage.removeItem("b3-blog-auth-token");
     window.location.href = "/login";
   };
 
-  //----------------------------------------
+  const checkTokenExpiry = () => {
+    const currTime = Date.now() / 1000;
+    if (decode.exp < currTime) {
+      handleLogout();
+    } else {
+      const expin = decode.exp - currTime;
+      setTimeout(handleLogout, expin * 1000);
+    }
+  };
+  checkTokenExpiry();
+
   const [blog, setBlog] = useState([]);
 
   const fetchData = async () => {
@@ -32,8 +43,6 @@ export default function User() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  //----------------------------------------
 
   return (
     <div>
@@ -105,7 +114,7 @@ export function UserBlogs({ props, fetchData }) {
   return (
     <div className="blogs-child">
       {!editing && image && (
-        <img src={`../upload/${image}`} width={"100%"} alt={title} />
+        <img src={`../upload/${image}`} width={"100px"} alt={title} />
       )}
       {editing ? (
         <input

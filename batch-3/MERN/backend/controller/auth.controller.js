@@ -5,9 +5,6 @@ const jwt = require("jsonwebtoken");
 
 dotenv.config();
 
-
-
-
 const Signup = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -46,9 +43,9 @@ const Login = async (req, res) => {
         id: isPresentUser._id,
         name: isPresentUser.username,
         email: isPresentUser.email,
+        exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60,
       },
-      process.env.JWT_SECRET_KEY,
-      { expiresIn: "7d" }
+      process.env.JWT_SECRET_KEY
     );
     if (!token) {
       return res.status(403).send("can not generate token ");
