@@ -2,6 +2,7 @@ const User = require("../model/auth.model.js");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 
 dotenv.config();
 
@@ -56,4 +57,91 @@ const Login = async (req, res) => {
   }
 };
 
-module.exports = { Signup, Login };
+const ForgetPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const isUser = await User.findOne({ email });
+    if (!isUser) {
+      return res.status(404).send("user does not exist...");
+    }
+
+    const secret = process.env.FORGET_PASSKEY + isUser.password;
+    const token = jwt.sign({ email: isUser.email, id: isUser._id }, secret, {
+      expiresIn: "5m",
+    });
+    const link = `http://127.0.0.1:8080/api/v1/reset-password/${isUser._id}/${token}`;
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.GOOGLE_AUTH_USER,
+        pass: process.env.GOOGLE_APP_PASSWORD,
+      },
+    });
+
+    var mailoptions = {
+      from: "anirbansharma36@gmail.com",
+      to: email,
+      subject: "Password Reset",
+      text: `Hello user , click the below link to reset your password within 5 min \n\n ${link}`,
+    };
+    transporter.sendMail(mailoptions, function (error, info) {
+      if (error) {
+        return res.send(error);
+      } else {
+        return res.send({ "email sent": info.response });
+      }
+    });
+  } catch (error) {
+    res.status(503).send(error.message);
+  }
+};
+
+const ResetPassword = async (req, res) => {
+  try {
+    const { id, token } = req.params;
+    const isUser = await User.findOne({ _id: id });
+    if (!isUser) {
+      return res.status(404).send("User not found");
+    }
+    const checkSecret =  process.env.FORGET_PASSKEY + isUser.password;
+    const verify = jwt.verify(token, checkSecret);
+    if (verify) {
+      return res.render("index", {
+        email: verify.email,
+        status: "not verified",
+      });
+    } else {
+      return res.status(404).send("something went wrong , try again later ...");
+    }
+  } catch (error) {
+    return res.status(503).send(error.message);
+  }
+};
+
+const ResetPasswordPost = async (req, res) => {
+  try {
+    const { id, token } = req.params;
+    const { password } = req.body;
+
+    const isUser = await User.findOne({ _id: id });
+    if (!isUser) {
+      return res.status(404).send("user does not exist");
+    }
+    const secret = process.env.FORGET_PASSKEY + isUser.password;
+    const verify = jwt.verify(token, secret);
+    const newPassword = await bcrypt.hash(password, 10);
+
+    await User.updateOne({ _id: id }, { $set: { password: newPassword } });
+    return res.render("index", { email: verify.email, status: "verified" });
+  } catch (error) {
+    res.status(503).send(error.message);
+  }
+};
+
+module.exports = {
+  Signup,
+  Login,
+  ForgetPassword,
+  ResetPassword,
+  ResetPasswordPost,
+};

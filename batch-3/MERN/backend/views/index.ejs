@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Forget Password</title>
+  </head>
+  <body>
+    <h2 style="text-align: center"><%= email%></h2>
+    <form method="post" id="resetPasswordForm">
+      <input
+        type="password"
+        placeholder="enter new password"
+        id="password"
+        name="password"
+      />
+      <br />
+      <input
+        type="password"
+        placeholder="confirm new password"
+        id="confirm-password"
+        name="confirm-password"
+      />
+      <input type="submit" value="Change Password" />
+    </form>
+    <script>
+      var status = `<%- JSON.stringify(status)%>`;
+      
+      if (JSON.parse(status) == "verified") {
+        if (confirm("Do you want to login again")) {
+          window.location.href = "http://localhost:3000/login";
+        }
+      }
+    </script>
+  </body>
+</html>

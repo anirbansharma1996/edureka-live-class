@@ -9,7 +9,7 @@ export default function Login() {
     password: "",
   });
   const [message, setMessage] = useState("");
-
+  const [mailmsg, setMailmsg] = useState("");
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -23,7 +23,7 @@ export default function Login() {
         setMessage((p) => res.data.message);
         localStorage.setItem("b3-blog-auth-token", res.data.token);
         setTimeout(() => {
-          window.location.href=("/");
+          window.location.href = "/";
         }, 1000);
       }
     } catch (error) {
@@ -32,10 +32,26 @@ export default function Login() {
     }
   };
 
+  const handleForget = async () => {
+    try {
+      const res = await axios.post(`${BASE_URL}/reset-password`, {
+        email: login.email,
+      });
+      if (res.data.status) {
+        setMailmsg("No user found");
+      } else {
+        setMailmsg("A link has been sent to your email address");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div style={{ width: "80%", margin: "auto" }}>
       <form className="login-form" onSubmit={handleSubmit}>
         <p>{message}</p>
+        {mailmsg && <p>{mailmsg}</p>}
         <label>EMAIL</label>
         <input
           type="email"
@@ -50,6 +66,12 @@ export default function Login() {
           value={login.password}
           onChange={handleInput}
         />
+        <h5
+          onClick={handleForget}
+          style={{ textAlign: "end", cursor: "pointer" }}
+        >
+          forgot password
+        </h5>
         <input type="submit" value="LOGIN" />
         <a href="/signup">SIGNUP</a>
       </form>

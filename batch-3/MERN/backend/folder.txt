@@ -17,3 +17,6 @@ backend/
   npm i express nodemon mongoose jsonwebtoken bcrypt dotenv
 
 server > database > model > controllers > router >+ server
+
+https://myaccount.google.com/apppasswords
+Security > 2-Step Verification > ( scroll to bottom ) App Password >    enter app name & press create
