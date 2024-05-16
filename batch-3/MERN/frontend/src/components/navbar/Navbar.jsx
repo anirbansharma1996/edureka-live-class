@@ -7,9 +7,14 @@ export default function Navbar() {
 
   return (
     <nav>
+      <div className="nav-logo">
+        <h1>IdeaInk</h1>
+      </div>
+      <div className="nav-info">
       <a href={"/"}>
         <h3>Blogs</h3>
       </a>
+      &nbsp;&nbsp;
       {decode ? (
         <a href={"/user"}>
           <h3>{decode.name}</h3>
@@ -19,6 +24,7 @@ export default function Navbar() {
           <h3>Login</h3>
         </a>
       )}
+      </div>
     </nav>
   );
 }
