@@ -7,6 +7,7 @@ export default function AuthcontextProvider({ children }) {
   const [token, setToken] = useState(
     localStorage.getItem("b3-blog-auth-token")
   );
+
   const decode = token ? jwtDecode(token) : null;
 
   return (

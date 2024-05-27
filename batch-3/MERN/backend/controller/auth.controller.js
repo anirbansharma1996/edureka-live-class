@@ -59,11 +59,11 @@ const Login = async (req, res) => {
 
 const GoogleLogin = async (req, res) => {
   try {
-
     const { name, email, picture, sub } = req.body;
-    const isPresentUser = await User.findOne({ email });
+    let isPresentUser = await User.findOne({ email });
+
     if (!isPresentUser) {
-      isPresentUser = new User({ username: name, email, picture, sub });
+      isPresentUser = new User({ username: name, email, image: picture, sub });
       await isPresentUser.save();
     }
     const token = jwt.sign(
@@ -71,13 +71,14 @@ const GoogleLogin = async (req, res) => {
         id: isPresentUser._id,
         name: isPresentUser.username,
         email: isPresentUser.email,
-        image: isPresentUser.picture,
+        image: isPresentUser.image,
         exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60,
       },
       process.env.JWT_SECRET_KEY
     );
+
     if (!token) {
-      return res.status(403).send("can not generate token ");
+      return res.status(403).send("can not generate token...");
     }
     res.status(200).send({ message: "Login success", token: token });
   } catch (error) {

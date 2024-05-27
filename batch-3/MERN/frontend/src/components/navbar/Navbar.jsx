@@ -4,7 +4,7 @@ import "./navbar.css";
 
 export default function Navbar() {
   const { decode } = useContext(TokenContext);
-   console.log(decode)
+
   return (
     <nav>
       <div className="nav-logo">
