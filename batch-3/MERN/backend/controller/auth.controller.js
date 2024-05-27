@@ -57,6 +57,34 @@ const Login = async (req, res) => {
   }
 };
 
+const GoogleLogin = async (req, res) => {
+  try {
+
+    const { name, email, picture, sub } = req.body;
+    const isPresentUser = await User.findOne({ email });
+    if (!isPresentUser) {
+      isPresentUser = new User({ username: name, email, picture, sub });
+      await isPresentUser.save();
+    }
+    const token = jwt.sign(
+      {
+        id: isPresentUser._id,
+        name: isPresentUser.username,
+        email: isPresentUser.email,
+        image: isPresentUser.picture,
+        exp: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60,
+      },
+      process.env.JWT_SECRET_KEY
+    );
+    if (!token) {
+      return res.status(403).send("can not generate token ");
+    }
+    res.status(200).send({ message: "Login success", token: token });
+  } catch (error) {
+    res.status(503).send(error.message);
+  }
+};
+
 const ForgetPassword = async (req, res) => {
   try {
     const { email } = req.body;
@@ -103,7 +131,7 @@ const ResetPassword = async (req, res) => {
     if (!isUser) {
       return res.status(404).send("User not found");
     }
-    const checkSecret =  process.env.FORGET_PASSKEY + isUser.password;
+    const checkSecret = process.env.FORGET_PASSKEY + isUser.password;
     const verify = jwt.verify(token, checkSecret);
     if (verify) {
       return res.render("index", {
@@ -141,6 +169,7 @@ const ResetPasswordPost = async (req, res) => {
 module.exports = {
   Signup,
   Login,
+  GoogleLogin,
   ForgetPassword,
   ResetPassword,
   ResetPasswordPost,

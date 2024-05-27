@@ -26,19 +26,17 @@ const getUserBlog = async (req, res) => {
 //CREATE -> POST
 const createBlog = async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, content, image } = req.body;
     const author = req.user.userId;
     if (!author) {
       return res.status(404).send("invalid user");
     }
-    const imagePath = req.file.path;
-    const imageUrl = path.basename(imagePath);
 
     const blog = new Blog({
       title,
       content,
       author,
-      image: imageUrl,
+      image,
       date: new Date(),
     });
     await blog.save();

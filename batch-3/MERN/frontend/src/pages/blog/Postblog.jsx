@@ -18,21 +18,30 @@ export default function Postblog() {
     setPblog({ ...pblog, [name]: value });
   };
   const handleImageInput = (e) => {
-    setPblog({ ...pblog, image: e.target.files[0] });
+    const file = e.target.files[0];
+    const maxSize = 16 * 1024;
+    if (file.size > maxSize) {
+      setMessage("Image size must be less than 17KB");
+      return;
+    }
+    setMessage("");
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setPblog({ ...pblog, image: reader.result });
+    };
+    reader.onerror = (error) => {
+      setMessage(error);
+    };
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formdata = new FormData();
-      formdata.append("title", pblog.title);
-      formdata.append("content", pblog.content);
-      formdata.append("image", pblog.image);
-
-      const res = await axios.post(`${BASE_URL}/blog`, formdata, {
+      const res = await axios.post(`${BASE_URL}/blog`, pblog, {
         headers: {
           Authorization: token,
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       });
       if (res.status === 201) {
@@ -40,6 +49,7 @@ export default function Postblog() {
         setPblog({
           title: "",
           content: "",
+          image: null,
         });
       }
     } catch (error) {
@@ -73,6 +83,9 @@ export default function Postblog() {
           onChange={handleInput}
           required
         ></textarea>
+        {pblog.image && (
+          <img width={"200px"} src={pblog.image} alt="upload image" />
+        )}
         <input
           type="file"
           accept="image/*"

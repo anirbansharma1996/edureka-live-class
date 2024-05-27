@@ -114,7 +114,7 @@ export function UserBlogs({ props, fetchData }) {
   return (
     <div className="blogs-child">
       {!editing && image && (
-        <img src={`../upload/${image}`} width={"100px"} alt={title} />
+        <img src={image} width={"100px"} alt={title} />
       )}
       {editing ? (
         <input

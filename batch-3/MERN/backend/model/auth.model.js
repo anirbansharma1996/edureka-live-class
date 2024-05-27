@@ -11,9 +11,10 @@ const UserSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
   },
+  image: { type: String },
+  sub: { type: String },
 });
 
-const User = new model("blog-auth",UserSchema)
-module.exports = User
+const User = new model("blog-auth", UserSchema);
+module.exports = User;

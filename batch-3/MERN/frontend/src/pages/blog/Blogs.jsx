@@ -45,7 +45,7 @@ export function BlogCard({ props }) {
 
   return (
     <div className="blogs-child">
-      {image && <img src={`../upload/${image}`} style={{ width: "100px" }} alt={title} />}
+      {image && <img src={image} style={{ width: "100px" }} alt={title} />}
       <h3>{title}</h3>
       <h5
         style={{ cursor: "pointer" }}
