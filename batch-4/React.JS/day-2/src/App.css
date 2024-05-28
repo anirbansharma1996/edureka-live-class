@@ -1,0 +1,22 @@
+ul{
+    display: flex;
+    justify-content: space-evenly;
+    text-decoration: none;
+}
+.parent{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+    text-align: center;
+}
+.child{
+  border: 1px solid red;
+  /* scale: 0.8; */
+  transition: 0.4s;
+  padding: 10px;
+}
+/* .child:hover{
+    border: 1px solid red;
+    scale: 1;
+  } */
