@@ -25,7 +25,7 @@ function Todo() {
     let after_delete = taskArr.filter((_, i) => i !== ix);
     setTaskArr(after_delete);
   };
-
+  
   const handleUpdate = (ix) => {
     let after_update = taskArr.map((el, i) =>
       ix == i ? { ...el, state: "done" } : el
