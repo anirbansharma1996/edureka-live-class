@@ -1,4 +1,30 @@
-img {
+nav {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  font-size: 20px;
+  margin-bottom: 2rem;
+}
+.nav-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+}
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.main-products-image {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: contain;
@@ -8,12 +34,15 @@ img {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   gap: 10px;
+  width: 90%;
+  margin: auto;
 }
 
 .products-card {
   border: 1px dashed;
   text-align: center;
   padding: 10px;
+  cursor: pointer;
 }
 
 .tracking-in-expand {
@@ -35,6 +64,58 @@ img {
     opacity: 1;
   }
 }
+.single-product-container {
+  width: 90%;
+  margin: auto;
+}
+
+.single-product-main {
+  display: flex;
+  gap: 7px;
+}
+.single-product-images {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+}
+.single-product-list-images {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+.single-product-list-images > img {
+  width: 100px;
+  margin: 2px;
+}
+.single-product-info {
+  width: 100%;
+  text-align: left;
+  padding-left: 5px;
+}
+.single-product-info > h2 {
+  font-size: 40px;
+  margin-top: -0.1px;
+}
+.single-product-info p {
+  font-size: 20px;
+}
+.single-product-info > h3 {
+  font-size: 30px;
+}
+.single-product-sizes {
+  display: flex;
+  gap: 10px;
+}
+.single-product-sizes > span {
+  border: 1px solid;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.single-product-sizes > span:hover {
+  color: white;
+  background-color: black;
+  padding: 10px 15px;
+}
 
 @media (max-width: 800px) {
   .products-main {
@@ -42,5 +123,29 @@ img {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     gap: 10px;
+  }
+  .single-product-main {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .single-product-images {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5px;
+  }
+  .single-product-list-images {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+    /* display: none; */
+  }
+  .single-product-list-images > img {
+    width: 90px;
+    height: 110px;
+    border: 1px solid;
+    padding: 10px;
   }
 }

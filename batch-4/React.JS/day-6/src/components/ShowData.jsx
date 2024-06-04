@@ -1,20 +1,25 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ShowData({ props }) {
-  const { id, title, price, category, description, image, rating } = props;
+  const navigate = useNavigate();
+  const { id, title, price, category, image, rating } = props;
 
   const old_price = Math.round(price + (price * 20) / 100) * 83;
 
   return (
-    <div className="products-card" key={id}>
+    <div
+      className="products-card"
+      key={id}
+      onClick={() => navigate(`/product?productId=${id}`)}
+    >
       <span>{category}</span>
-      <img src={image} alt={title} />
+      <img className="main-products-image" src={image} alt={title} />
       <h4>{title}</h4>
-      {/* <p>{description.substring(0,200)}</p> */}
       <div
         style={{
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "space-between",
           alignItems: "center",
         }}
       >
