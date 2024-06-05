@@ -116,6 +116,20 @@ nav {
   background-color: black;
   padding: 10px 15px;
 }
+.signup,.login {
+  border: 1px solid;
+  width: 17%;
+  margin: auto;
+  padding: 10px;
+}
+.signup input, .login input {
+  padding: 10px;
+  margin: 3px;
+}
+.signup input[type="submit"],.login input[type="submit"] {
+  width: 90%;
+  margin: 6px;
+}
 
 @media (max-width: 800px) {
   .products-main {
@@ -146,6 +160,12 @@ nav {
     width: 90px;
     height: 110px;
     border: 1px solid;
+    padding: 10px;
+  }
+  .signup,.login {
+    border: 1px solid;
+    width: 40%;
+    margin: auto;
     padding: 10px;
   }
 }

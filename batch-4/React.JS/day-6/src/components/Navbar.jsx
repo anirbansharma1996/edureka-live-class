@@ -3,11 +3,17 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/logoshop.jpg";
 
 export default function Navbar() {
+  let isAuth = localStorage.getItem("ShopStop-login");
+  let isUser = JSON.parse(localStorage.getItem("ShopStop"));
   const links = [
     { route: "/", dest: "HOME" },
     { route: "/products", dest: "PRODUCTS" },
+    {
+      route: isAuth == "true" ? "/user" : "/login",
+      dest: isAuth == "true" ? isUser?.username : "LOGIN",
+    },
   ];
-
+  console.log(isAuth);
   return (
     <nav>
       <a href="/" style={{ textDecoration: "none", color: "white" }}>
