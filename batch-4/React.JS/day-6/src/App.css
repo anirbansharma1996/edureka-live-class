@@ -104,29 +104,60 @@ nav {
 }
 .single-product-sizes {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.single-product-sizes > div {
+  display: flex;
   gap: 10px;
 }
-.single-product-sizes > span {
+.single-product-sizes > div > button {
+  padding: 10px 15px;
+  border: 0;
+  cursor: pointer;
+  transition: 0.4s;
+  border-radius: 10px;
+}
+.single-product-sizes > div > button:first-child {
+  background-color: orangered;
+  color: white;
+}
+.single-product-sizes > div > button:first-child:hover {
+  border-radius: 20px;
+}
+.single-product-sizes > div > button:last-child {
+  background-color: orange;
+  color: white;
+  font-size: 20px;
+}
+.single-product-sizes > div > button:last-child:hover {
+  border-radius: 20px;
+}
+
+.single-product-sizes > div > span {
   border: 1px solid;
   padding: 10px 15px;
   cursor: pointer;
 }
-.single-product-sizes > span:hover {
+.single-product-sizes > div > span:hover {
   color: white;
   background-color: black;
   padding: 10px 15px;
 }
-.signup,.login {
+.signup,
+.login {
   border: 1px solid;
   width: 17%;
   margin: auto;
   padding: 10px;
 }
-.signup input, .login input {
+.signup input,
+.login input {
   padding: 10px;
   margin: 3px;
 }
-.signup input[type="submit"],.login input[type="submit"] {
+.signup input[type="submit"],
+.login input[type="submit"] {
   width: 90%;
   margin: 6px;
 }
@@ -162,7 +193,8 @@ nav {
     border: 1px solid;
     padding: 10px;
   }
-  .signup,.login {
+  .signup,
+  .login {
     border: 1px solid;
     width: 40%;
     margin: auto;

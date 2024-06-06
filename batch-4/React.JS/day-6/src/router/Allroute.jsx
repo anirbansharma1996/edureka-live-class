@@ -6,6 +6,7 @@ import SingleProduct from "../components/SingleProduct";
 import Signup from "../components/auth/Signup";
 import Login from "../components/auth/Login";
 import User from "../components/User";
+import Cart from "../components/Cart";
 
 export const Allroute = () => {
   return (
@@ -16,6 +17,8 @@ export const Allroute = () => {
       <Route path="/user" element={<User />} />
       <Route path="/products" element={<Products />} />
       <Route path="/product" element={<SingleProduct />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="*" element={<Home />} />
     </Routes>
   );
 };

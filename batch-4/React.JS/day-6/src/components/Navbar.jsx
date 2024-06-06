@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logoshop.jpg";
+import { IoCartOutline } from "react-icons/io5";
 
 export default function Navbar() {
   let isAuth = localStorage.getItem("ShopStop-login");
@@ -8,12 +9,12 @@ export default function Navbar() {
   const links = [
     { route: "/", dest: "HOME" },
     { route: "/products", dest: "PRODUCTS" },
+    { route: "/cart", dest: <IoCartOutline /> },
     {
       route: isAuth == "true" ? "/user" : "/login",
       dest: isAuth == "true" ? isUser?.username : "LOGIN",
     },
   ];
-  console.log(isAuth);
   return (
     <nav>
       <a href="/" style={{ textDecoration: "none", color: "white" }}>

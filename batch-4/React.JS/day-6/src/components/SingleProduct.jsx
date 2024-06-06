@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useSearchParams } from "react-router-dom";
 import axios from "axios";
-import {Loading} from "./Loading"
+import { Loading } from "./Loading";
+import { FiShoppingCart } from "react-icons/fi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SingleProduct() {
   const [searchParams, setSearchParams] = useSearchParams();
   const productId = searchParams.get("productId");
-  
+  const successs = () => toast.success("Added to Cart !");
+
   const [singleData, setSingleData] = useState(null);
-  const [isLoading,setIsloading] = useState(false)
+  const [isLoading, setIsloading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setIsloading(true)
+        setIsloading(true);
         let res = await axios.get(
           `https://fakestoreapi.com/products/${productId}`
         );
         setSingleData(res.data);
-        setIsloading(false)
+        setIsloading(false);
       } catch (error) {
-        setIsloading(false)
+        setIsloading(false);
         console.log(error);
       }
     };
@@ -28,13 +32,22 @@ export default function SingleProduct() {
   }, []);
   const old_price =
     Math.round(singleData?.price + (singleData?.price * 20) / 100) * 83;
-  
-    if(isLoading){
-        return <Loading/>
+
+  // add data to cart
+  const handleAddToCart = (el) => {
+    if (el) {
+      const cart = JSON.parse(localStorage.getItem("ShopStop-Cart")) || [];
+      cart.push(el);
+      localStorage.setItem("ShopStop-Cart", JSON.stringify(cart));
+      successs();
     }
+  };
 
 
 
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="single-product-container">
@@ -67,10 +80,18 @@ export default function SingleProduct() {
             {Math.round(singleData?.price) * 83}/-
           </h3>
           <div className="single-product-sizes">
-            <span>S</span>
-            <span>M</span>
-            <span>L</span>
-            <span>XL</span>
+            <div>
+              <span>S</span>
+              <span>M</span>
+              <span>L</span>
+              <span>XL</span>
+            </div>
+            <div>
+              <button>BUY NOW</button>
+              <button onClick={() => handleAddToCart(singleData)}>
+                <FiShoppingCart />
+              </button>
+            </div>
           </div>
           <div
             style={{
@@ -92,6 +113,7 @@ export default function SingleProduct() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
