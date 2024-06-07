@@ -21,14 +21,56 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+ padding-right: 10px;
 }
-
+.user-info{
+  padding: 10px;
+  border-radius: 100%;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  font-size: 25px;
+}
 .main-products-image {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: contain;
 }
+
+.products{
+  display: flex;
+  gap: 10px;
+  width: 95%;
+  margin: auto;
+}
+.products-filter{
+  width: 30%;
+  padding: 10px;
+  border: 1px dashed;
+}
+.products-filter > button {
+  width: 100%;
+  padding: 10px;
+  margin: 3px;
+  border: 0;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.products-filter > button:hover {
+  width: 100%;
+  padding: 10px;
+  margin: 2px;
+  border: 1px solid;
+
+}
+.products-filter > input{
+  width: 80%;
+  padding: 10px;
+  margin: 3px;
+}
+
+
 .products-main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -36,6 +78,9 @@ nav {
   gap: 10px;
   width: 90%;
   margin: auto;
+  height: 80vh;
+  overflow: auto;
+  scrollbar-width: none;
 }
 
 .products-card {
@@ -163,9 +208,15 @@ nav {
 }
 
 @media (max-width: 800px) {
+  .nav-list{
+    font-size: 16px;
+  }
+  .products-filter{
+    width: 45%;
+  }
   .products-main {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: auto;
     gap: 10px;
   }

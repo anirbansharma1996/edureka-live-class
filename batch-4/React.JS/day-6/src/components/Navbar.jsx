@@ -9,10 +9,11 @@ export default function Navbar() {
   const links = [
     { route: "/", dest: "HOME" },
     { route: "/products", dest: "PRODUCTS" },
-    { route: "/cart", dest: <IoCartOutline /> },
+    { route: isAuth == "true" ? "/cart":"", dest:isAuth == "true" ?  <IoCartOutline />:"" },
     {
       route: isAuth == "true" ? "/user" : "/login",
-      dest: isAuth == "true" ? isUser?.username : "LOGIN",
+      dest:
+        isAuth == "true" ? <DisplayUser props={isUser?.username} /> : "LOGIN",
     },
   ];
   return (
@@ -38,3 +39,11 @@ export default function Navbar() {
     </nav>
   );
 }
+
+export function DisplayUser({ props }) {
+  let un = props.toUpperCase().split(" ")
+  un= un[0][0]+un[1][0]
+
+  return <div className="user-info">{un}</div>;
+}
+

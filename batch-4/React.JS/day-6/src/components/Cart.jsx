@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const [cartData, setCartData] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const isLoggedin = localStorage.getItem("ShopStop-login");
+  const navigate = useNavigate()
+   
+
+  if (isLoggedin == "false") {
+    navigate("/login");
+  }
+
 
   useEffect(() => {
     let cart = JSON.parse(localStorage.getItem("ShopStop-Cart")) || [];

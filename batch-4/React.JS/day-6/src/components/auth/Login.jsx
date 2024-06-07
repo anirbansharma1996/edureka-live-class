@@ -13,7 +13,7 @@ export default function Login() {
     setLogin({ ...login, [name]: value });
   };
   let user = JSON.parse(localStorage.getItem("ShopStop"));
-  console.log(user);
+
   const handleLogin = (e) => {
     e.preventDefault();
     if (login.email == user.email && login.password == user.password) {

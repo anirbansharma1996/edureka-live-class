@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useSearchParams } from "react-router-dom";
+import { NavLink, useSearchParams,useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Loading } from "./Loading";
 import { FiShoppingCart } from "react-icons/fi";
@@ -7,12 +7,16 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function SingleProduct() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const productId = searchParams.get("productId");
-  const successs = () => toast.success("Added to Cart !");
-
   const [singleData, setSingleData] = useState(null);
   const [isLoading, setIsloading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate()
+
+
+  const productId = searchParams.get("productId");
+  const successs = () => toast.success("Added to Cart !");
+  const isLoggedin = localStorage.getItem("ShopStop-login");
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,15 +39,15 @@ export default function SingleProduct() {
 
   // add data to cart
   const handleAddToCart = (el) => {
-    if (el) {
+    if (isLoggedin == "false") {
+      navigate("/login");
+    } else {
       const cart = JSON.parse(localStorage.getItem("ShopStop-Cart")) || [];
       cart.push(el);
       localStorage.setItem("ShopStop-Cart", JSON.stringify(cart));
       successs();
     }
   };
-
-
 
   if (isLoading) {
     return <Loading />;

@@ -7,6 +7,7 @@ import axios from "axios";
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   const [error, setError] = useState("");
   useEffect(() => {
     const fetchdata = async () => {
@@ -30,6 +31,27 @@ export default function Products() {
     fetchdata();
   }, []);
 
+  const handleSort = (check) => {
+    let temp = [...products];
+    if (check == "h-l") {
+      let high = temp?.sort((a, b) => b.price - a.price);
+      setProducts(high);
+    } else if (check == "l-h") {
+      let low = temp?.sort((a, b) => a.price - b.price);
+      setProducts(low);
+    }
+  };
+  const handleSearchInput = (query) => {
+    if (query == "") {
+      setProducts(products);
+    } else {
+      let s_item = products.filter((el) =>
+        el.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setProducts(s_item);
+    }
+  };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -38,10 +60,29 @@ export default function Products() {
   }
 
   return (
-    <div className="products-main">
-      {products?.map((el) => (
-        <ShowData key={el.id} props={el} />
-      ))}
+    <div className="products">
+      <div className="products-filter">
+        <label>Search</label>
+        <input
+          onChange={(e) => handleSearchInput(e.target.value)}
+          type="text"
+        />
+        <hr />
+        Sort By Price
+        <button onClick={() => handleSort("h-l")}>Price High to Low</button>
+        <button onClick={() => handleSort("l-h")}>Price Low to High</button>
+        <hr />
+        Filter by Category
+        <button>Men's Collection</button>
+        <button>Women's Collection</button>
+        <button>Jewellery</button>
+        <button>Electronics</button>
+      </div>
+      <div className="products-main">
+        {products?.map((el) => (
+          <ShowData key={el.id} props={el} />
+        ))}
+      </div>
     </div>
   );
 }
