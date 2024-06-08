@@ -1,5 +1,5 @@
 nav {
-  padding: 10px;
+  padding: 5px;
   background-color: black;
   color: white;
   display: flex;
@@ -8,7 +8,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 999;
-  font-size: 20px;
+  font-size: 17px;
   margin-bottom: 2rem;
 }
 .nav-logo {
@@ -30,7 +30,7 @@ nav {
   background-color: white;
   color: black;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 15px;
 }
 .main-products-image {
   width: 100%;
@@ -206,6 +206,28 @@ nav {
   width: 90%;
   margin: 6px;
 }
+.checkout{
+  width: 30%;
+  text-align: left;
+}
+.payment-form{
+  text-align: left;
+}
+.payment-form > input{
+   width: 90%;
+   padding: 7px;
+   margin-top: 10px;
+   margin-bottom: 5px;
+}
+.payment-form-bottom{
+  display: flex;
+  gap: 7px;
+}
+.payment-form-bottom > div > input{
+ width: 80%;
+ padding: 7px;
+ margin: 10px 0;
+}
 
 @media (max-width: 800px) {
   .nav-list{
@@ -250,5 +272,9 @@ nav {
     width: 40%;
     margin: auto;
     padding: 10px;
+  }
+  .checkout{
+    width: 40%;
+    text-align: left;
   }
 }
