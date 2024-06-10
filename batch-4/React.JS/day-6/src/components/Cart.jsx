@@ -73,16 +73,12 @@ export default function Cart() {
       </table>
 
       <hr />
-      <Checkout bill={total} cartdata={cartData} />
+      <Checkout bill={total} setCartData={setCartData} cartData={cartData} />
     </div>
   );
 }
 
-export function Checkout({ bill, cartdata }) {
-  const [orders, setOrders] = useState({
-    order: cartdata,
-    amount: bill+100,
-  });
+export function Checkout({ bill, setCartData,cartData }) {
   const [modalIsOpen, setIsOpen] = useState(false);
   const successs = () =>
     toast.success(`Payment of ₹${bill + 100} is successful !`);
@@ -94,9 +90,13 @@ export function Checkout({ bill, cartdata }) {
   }
 
   const handlePayment = () => {
+    const orders = JSON.parse(localStorage.getItem("ShopStop-orders")) || [];
+    orders.push(...cartData);
+    localStorage.setItem("ShopStop-orders", JSON.stringify(orders));
+    localStorage.removeItem("ShopStop-cart");
+    setCartData([]);
     successs();
     setIsOpen(false);
-    localStorage.setItem("ShopStop-orders", JSON.stringify(orders));
   };
 
   return (

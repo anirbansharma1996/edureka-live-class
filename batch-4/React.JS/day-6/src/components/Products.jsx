@@ -1,70 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import ShowData from "./ShowData";
-const BASE_URL = "https://fakestoreapi.com/products";
 import { Loading } from "./Loading";
 import { GrPowerReset } from "react-icons/gr";
-import axios from "axios";
+import { ApiContext } from "../context/ApiContext";
 
 export default function Products() {
-  const [products, setProducts] = useState([]);
-  const [filterData, setFilterData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const fetchdata = async () => {
-    try {
-      setIsLoading(true);
-      setError("");
-      const response = await axios(BASE_URL);
-      if (response?.status == 200) {
-        setFilterData(response.data);
-        setProducts(response.data);
-        setError("");
-        setIsLoading(false);
-      } else {
-        setError("Try again later...");
-      }
-    } catch (error) {
-      setIsLoading(false);
-      setError("Something went wrong...");
-      console.error(error);
-    }
-  };
+  const {
+    filterData,
+    isLoading,
+    error,
+    fetchdata,
+    handleSort,
+    handleCategory,
+    handleSearchInput,
+  } = useContext(ApiContext);
+
   useEffect(() => {
     fetchdata();
   }, []);
-
-  const handleSort = (check) => {
-    let temp = [...products];
-    if (check == "h-l") {
-      let high = temp?.sort((a, b) => b.price - a.price);
-      setFilterData(high);
-    } else if (check == "l-h") {
-      let low = temp?.sort((a, b) => a.price - b.price);
-      setFilterData(low);
-    }
-  };
-
-  const handleCategory = (arg) => {
-    let temp = products.filter((el) => el.category === arg);
-    setFilterData(temp);
-  };
-  //DEBOUNCE
-  const debounce = (func, delay) => {
-    let id;
-    return (...args) => {
-      clearTimeout(id);
-      id = setTimeout(() => {
-        func(...args);
-      }, delay);
-    };
-  };
-
-  const handleSearchInput = debounce((query) => {
-    let temp = filterData.filter((el) =>
-      el.title.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilterData(temp)
-  },600);
 
   if (isLoading) {
     return <Loading />;

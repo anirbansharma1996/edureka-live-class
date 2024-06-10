@@ -9,6 +9,8 @@ export default function User() {
   const handleLogout = () => {
     toast.warning("We will miss you !!");
     localStorage.setItem("ShopStop-login", false);
+    localStorage.removeItem('ShopStop-orders')
+    localStorage.removeItem('ShopStop-Cart')
     setTimeout(() => {
       window.location.href = "/login";
     }, 1000);
@@ -68,7 +70,7 @@ export function Myorders({ props }) {
           </tr>
         </thead>
         <tbody>
-          {props.order?.map((el, i) => (
+          {props?.map((el, i) => (
             <tr key={el.title}>
               <td>
                 <img width={40} src={el.image} alt={el.title} />
@@ -80,7 +82,6 @@ export function Myorders({ props }) {
           ))}
         </tbody>
       </table>
-      <h2 style={{ textAlign: "right" }}>Paid : ₹{props.amount}/-</h2>
     </div>
   );
 }

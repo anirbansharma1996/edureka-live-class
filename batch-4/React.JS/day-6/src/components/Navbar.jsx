@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logoshop.jpg";
 import { IoCartOutline } from "react-icons/io5";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Navbar() {
-  let isAuth = localStorage.getItem("ShopStop-login");
-  let isUser = JSON.parse(localStorage.getItem("ShopStop"));
+   const {isAuth,isUser} = useContext(AuthContext)
   const links = [
     { route: "/", dest: "HOME" },
     { route: "/products", dest: "PRODUCTS" },
