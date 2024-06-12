@@ -22,9 +22,9 @@ nav {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
- padding-right: 10px;
+  padding-right: 10px;
 }
-.user-info{
+.user-info {
   padding: 10px;
   border-radius: 100%;
   background-color: white;
@@ -32,19 +32,47 @@ nav {
   cursor: pointer;
   font-size: 15px;
 }
+
+.hero-section {
+  background-image: url("https://t4.ftcdn.net/jpg/06/83/62/39/360_F_683623998_m80ynG0UV3G0rSfVl771Kk2RVQA08P4J.jpg");
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top: -3rem;
+  color: white;
+  font-size: 30px;
+  text-align: left;
+  padding: 10px 0 0 4rem;
+}
+.hero-section > button {
+  padding: 10px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: orangered;
+  color: white;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.hero-section > button:hover {
+  outline: 1px solid white;
+  background-color: rgb(228, 85, 33);
+}
+
 .main-products-image {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: contain;
 }
 
-.products{
+.products {
   display: flex;
   gap: 10px;
   width: 95%;
   margin: auto;
 }
-.products-filter{
+.products-filter {
   width: 30%;
   padding: 10px;
   border: 1px dashed;
@@ -62,14 +90,12 @@ nav {
   padding: 10px;
   margin: 2px;
   border: 1px solid;
-
 }
-.products-filter > input{
+.products-filter > input {
   width: 80%;
   padding: 10px;
   margin: 3px;
 }
-
 
 .products-main {
   display: grid;
@@ -206,34 +232,37 @@ nav {
   width: 90%;
   margin: 6px;
 }
-.checkout{
+.checkout {
   width: 30%;
   text-align: left;
 }
-.payment-form{
+.payment-form {
   text-align: left;
 }
-.payment-form > input{
-   width: 90%;
-   padding: 7px;
-   margin-top: 10px;
-   margin-bottom: 5px;
+.payment-form > input {
+  width: 90%;
+  padding: 7px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
-.payment-form-bottom{
+.payment-form-bottom {
   display: flex;
   gap: 7px;
 }
-.payment-form-bottom > div > input{
- width: 80%;
- padding: 7px;
- margin: 10px 0;
+.payment-form-bottom > div > input {
+  width: 80%;
+  padding: 7px;
+  margin: 10px 0;
 }
 
 @media (max-width: 800px) {
-  .nav-list{
+  .hero-section {
+    height: 60vh;
+  }
+  .nav-list {
     font-size: 16px;
   }
-  .products-filter{
+  .products-filter {
     width: 45%;
   }
   .products-main {
@@ -273,7 +302,7 @@ nav {
     margin: auto;
     padding: 10px;
   }
-  .checkout{
+  .checkout {
     width: 40%;
     text-align: left;
   }
