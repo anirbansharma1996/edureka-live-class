@@ -32,7 +32,17 @@ nav {
   cursor: pointer;
   font-size: 15px;
 }
-
+.upper-arrow{
+  border: 1px solid;
+  width: 20px;
+  padding: 10px;
+  background-color: white;
+  position: fixed;
+  top: 91%;
+  right: 1%;
+  z-index: 99;
+  cursor: pointer;
+}
 .hero-section {
   background-image: url("https://t4.ftcdn.net/jpg/06/83/62/39/360_F_683623998_m80ynG0UV3G0rSfVl771Kk2RVQA08P4J.jpg");
   height: 70vh;
@@ -54,10 +64,88 @@ nav {
   color: white;
   cursor: pointer;
   transition: 0.4s;
+  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+.hero-section > h1 {
+  margin-top: 5rem;
+  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 .hero-section > button:hover {
   outline: 1px solid white;
   background-color: rgb(228, 85, 33);
+}
+.swiper {
+  width: 90%;
+  margin: 20px 0;
+  text-align: left;
+}
+.carousel-main {
+  position: relative;
+  margin: 5px;
+  transition: 0.9s;
+}
+.carousel-info {
+  padding: 10px;
+  position: absolute;
+  z-index: 99;
+  bottom: 0;
+  background: inherit;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  margin: auto;
+  display: none;
+  border-radius: 10px;
+}
+.carousel-main:hover .carousel-info {
+  display: block;
+}
+.insights {
+  display: flex;
+  border: 1px solid;
+  background-color: black;
+  color: white;
+  justify-content: space-around;
+  align-items: center;
+}
+.insights h1 {
+  font-size: 30px;
+}
+.insights span {
+  font-size: 20px;
+}
+.contact-us {
+  display: flex;
+  margin: 10px;
+  gap: 25px;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+.contact-us iframe {
+  height: 80vh;
+  width: 100vw;
+}
+.contact-us-info {
+  text-align: left;
+  width: 50%;
+}
+.contact-us-info h1 {
+  font-size: 30px;
+}
+.contact-us-info span {
+  color: grey;
+  font-size: 20px;
 }
 
 .main-products-image {
@@ -255,9 +343,23 @@ nav {
   margin: 10px 0;
 }
 
+.footer {
+  background-color: black;
+  color: white;
+  margin-top: 1rem;
+}
+.footer-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 800px) {
   .hero-section {
     height: 60vh;
+  }
+  .hero-section > h1 {
+    margin-top: 3rem;
   }
   .nav-list {
     font-size: 16px;
@@ -305,5 +407,16 @@ nav {
   .checkout {
     width: 40%;
     text-align: left;
+  }
+  .contact-us iframe {
+    height: 50vh;
+    width: 70vw;
+  }
+  .contact-us-info h1 {
+    font-size: 20px;
+  }
+  .contact-us-info span {
+    color: grey;
+    font-size: 16px;
   }
 }

@@ -1,5 +1,5 @@
 import "./App.css";
-import { Loading } from "./components/Loading";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { Allroute } from "./router/Allroute";
 
@@ -8,6 +8,7 @@ export default function App() {
     <>
       <Navbar />
       <Allroute />
+      <Footer/>
     </>
   );
 }

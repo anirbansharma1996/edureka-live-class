@@ -9,8 +9,8 @@ export default function User() {
   const handleLogout = () => {
     toast.warning("We will miss you !!");
     localStorage.setItem("ShopStop-login", false);
-    localStorage.removeItem('ShopStop-orders')
-    localStorage.removeItem('ShopStop-Cart')
+    localStorage.removeItem("ShopStop-orders");
+    localStorage.removeItem("ShopStop-Cart");
     setTimeout(() => {
       window.location.href = "/login";
     }, 1000);
@@ -51,6 +51,7 @@ export default function User() {
           LOGOUT
         </button>
       </div>
+
       <Myorders props={cartData} />
       <ToastContainer />
     </div>
@@ -60,6 +61,7 @@ export default function User() {
 export function Myorders({ props }) {
   return (
     <div style={{ width: "90%", margin: "auto" }}>
+      <h2 style={{ textAlign: "left" }}>My Orders</h2>
       <table cellPadding={"10"} border={1} style={{ width: "100%" }}>
         <thead>
           <tr>
