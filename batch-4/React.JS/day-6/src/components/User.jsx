@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const dummy ='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'
+
 
 export default function User() {
   const [cartData, setCartData] = useState([]);
@@ -33,9 +35,17 @@ export default function User() {
           margin: "auto",
         }}
       >
-        <div>
-          <h1>{user?.username}</h1>
-          <p>{user?.email}</p>
+        <div style={{
+          display:"flex",
+          justifyContent:"space-between",
+          alignItems:"center",
+          gap:'10px'
+        }}>
+          <img width={100} style={{borderRadius:"50%"}} src={user?.picture || dummy} alt="" />
+          <div>
+            <h1>{user?.username}</h1>
+            <p>{user?.email}</p>
+          </div>
         </div>
 
         <button

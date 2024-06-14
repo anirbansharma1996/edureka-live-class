@@ -9,11 +9,11 @@ export default function Navbar() {
   const links = [
     { route: "/", dest: "HOME" },
     { route: "/products", dest: "PRODUCTS" },
-    { route: isAuth == "true" ? "/cart":"", dest:isAuth == "true" ?  <IoCartOutline />:"" },
+    { route: isAuth == "true" ? "/cart":"", dest:isAuth == "true" ?  <IoCartOutline style={{fontSize:"30px"}} />:"" },
     {
       route: isAuth == "true" ? "/user" : "/login",
       dest:
-        isAuth == "true" ? <DisplayUser props={isUser?.username} /> : "LOGIN",
+        isAuth == "true" ? <DisplayUser username={isUser?.username} picture={isUser?.picture} /> : "LOGIN",
     },
   ];
   return (
@@ -40,10 +40,12 @@ export default function Navbar() {
   );
 }
 
-export function DisplayUser({ props }) {
-  let un = props.toUpperCase().split(" ")
-  un= un[0][0]+un[1][0]
+export function DisplayUser({ username , picture=null }) {
+  let un = username.toUpperCase().split(" ")
+  un= un[0][0] || un[0][0]+un[1][0]
 
-  return <div className="user-info">{un}</div>;
+  return <div >
+    {picture ? <img style={{borderRadius:'50%'}} width={40} src={picture}/> : <p className="user-info">{un}</p>}
+  </div>;
 }
 
