@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+</head>
+<body>
+  <h1>User Management</h1>
+
+  <h2>Add User</h2>
+  <form id="addUserForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br><br>
+    <button type="submit">Add User</button>
+  </form>
+
+  <h2>User List</h2>
+  <ul id="userList"></ul>
+
+  <script>
+    const userList = document.getElementById("userList");
+    const addUserForm = document.getElementById("addUserForm");
+
+    // Function to fetch and display the user list
+    function fetchUserList() {
+      fetch("http://127.0.0.1:8080/api/v1/users")
+        .then(response => response.json())
+        .then(data => {
+          userList.innerHTML = "";
+          data.users.forEach(user => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `Name: ${user.name}, Email: ${user.email}`;
+            userList.appendChild(listItem);
+          });
+        })
+        .catch(error => console.error(error));
+    }
+
+    addUserForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const newUser = { name, email };
+      // Send POST request to add the user
+      fetch("http://127.0.0.1:8080/api/v1/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("User added:", data);
+          fetchUserList(); 
+          addUserForm.reset(); 
+        })
+        .catch(error => console.error(error));
+    });
+    // Fetch and display the initial user list
+    fetchUserList();
+  </script>
+</body>
+</html>
