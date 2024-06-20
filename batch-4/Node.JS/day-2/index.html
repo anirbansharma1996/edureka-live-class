@@ -10,6 +10,8 @@
 
   <h2>Add User</h2>
   <form id="addUserForm">
+    <label for="id">ID:</label>
+    <input type="text" id="userId">
     <label for="name">Name:</label>
     <input type="text" id="name" required><br><br>
     <label for="email">Email:</label>
@@ -20,9 +22,23 @@
   <h2>User List</h2>
   <ul id="userList"></ul>
 
+  <h2>Update User</h2>
+  <form id="updateUserForm">
+    <input type="hidden" id="updateUserId">
+    <label for="updateName">Name:</label>
+    <input type="text" id="updateName" required><br><br>
+    <label for="updateEmail">Email:</label>
+    <input type="email" id="updateEmail" required><br><br>
+    <button type="submit">Update User</button>
+  </form>
+
   <script>
     const userList = document.getElementById("userList");
     const addUserForm = document.getElementById("addUserForm");
+    const updateUserForm = document.getElementById("updateUserForm");
+    const updateUserId = document.getElementById("updateUserId");
+    const updateName = document.getElementById("updateName");
+    const updateEmail = document.getElementById("updateEmail");
 
     // Function to fetch and display the user list
     function fetchUserList() {
@@ -32,7 +48,9 @@
           userList.innerHTML = "";
           data.users.forEach(user => {
             const listItem = document.createElement("li");
-            listItem.textContent = `Name: ${user.name}, Email: ${user.email}`;
+            listItem.innerHTML = `Name: ${user.name}, Email: ${user.email} 
+                                  <button onclick="deleteUser('${user.id}')">Delete</button> 
+                                  <button onclick="editUser('${user.id}', '${user.name}', '${user.email}')">Update</button>`;
             userList.appendChild(listItem);
           });
         })
@@ -41,9 +59,10 @@
 
     addUserForm.addEventListener("submit", event => {
       event.preventDefault();
+      const id = document.getElementById("userId").value;
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
-      const newUser = { name, email };
+      const newUser = { id ,name, email };
       // Send POST request to add the user
       fetch("http://127.0.0.1:8080/api/v1/users", {
         method: "POST",
@@ -58,6 +77,48 @@
         })
         .catch(error => console.error(error));
     });
+
+    function deleteUser(userId) {
+      fetch(`http://127.0.0.1:8080/api/v1/users/${userId}`, {
+        method: "DELETE"
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("User deleted:", data);
+          fetchUserList();
+        })
+        .catch(error => console.error(error));
+    }
+
+    function editUser(id, name, email) {
+      updateUserId.value = id;
+      updateName.value = name;
+      updateEmail.value = email;
+      updateUserForm.style.display = "block";
+    }
+
+    updateUserForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const id = updateUserId.value;
+      const name = updateName.value;
+      const email = updateEmail.value;
+      const updatedUser = { name, email };
+      // Send PATCH request to update the user
+      fetch(`http://127.0.0.1:8080/api/v1/users/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedUser)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("User updated:", data);
+          fetchUserList();
+          updateUserForm.reset();
+          updateUserForm.style.display = "none";
+        })
+        .catch(error => console.error(error));
+    });
+
     // Fetch and display the initial user list
     fetchUserList();
   </script>

@@ -44,6 +44,7 @@ const server = http.createServer((req, res) => {
   } else if (req.method === "PATCH" && req.url.startsWith("/api/v1/users/")) {
     // PATCH request to update a user
     const userId = req.url.split("/")[4];
+    console.log(userId)
     const index = database.users.findIndex((user) => user.id === userId);
     if (index !== -1) {
       let body = "";
