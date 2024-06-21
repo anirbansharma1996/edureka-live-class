@@ -9,7 +9,6 @@ const SignUp = async (req, res) => {
     return res.send(503).json(error.message);
   }
 };
-
 const Login = async (req, res) => {
   try {
     const { email, password } = req.body;
