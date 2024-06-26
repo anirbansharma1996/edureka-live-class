@@ -1,7 +1,7 @@
 Fields
-------------------------------------------
+------------------------------------------------------------------------------------------------------------------
 The following operators can be used to update fields:
-
+-----------------------------------------------------------------------------------------------------------------
 $currentDate: Sets the field value to the current date
 $inc: Increments the field value
 $rename: Renames the field
@@ -9,9 +9,9 @@ $set: Sets the value of a field
 $unset: Removes the field from the document
 
 Array
-----------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
 The following operators assist with updating arrays.
-
+-----------------------------------------------------------------------------------------------------------------
 $addToSet: Adds distinct elements to an array
 $pop: Removes the first or last element of an array
 $pull: Removes all elements from an array that match the query
@@ -37,10 +37,10 @@ db.users.insertMany([
     joined: new Date("2021-01-01")
   }
 ]);
----------------------------------------------------------------------------------------------------------------------
------------------------------
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
 Using fields Update Operators
------------------------------
+-----------------------------------------------------------------------------------------------------------------
 1. $currentDate: Sets the field value to the current date
 db.users.updateOne(
   { name: "Alice" },
@@ -60,19 +60,25 @@ db.users.updateOne(
 );
 
 4. $set: Sets the value of a field
-db.users.updateOne(
+[1] db.users.updateOne(
   { name: "Alice" },
   { $set: { email: "alice@example.com" } }
 );
+[2] db.employee.updateOne({name:"Bob"},{$set:{address:[{state:"WB"},{pin:735101}]}});
+
+[3] db.employee.updateOne(
+  { name: "Bob", "address.pin": 735101 }, // Assuming you want to update the pin 735101
+  { $set: { "address.$.pin": 700000 } } // Using the positional operator to update the specific pin
+)
 
 5. $unset: Removes the field from the document
 db.users.updateOne(
   { name: "Bob" },
   { $unset: { hobbies: "" } }
 );
--------------------------
+-----------------------------------------------------------------------------------------------------------------
 Array Update Operators
--------------------------
+------------------------------------------------------------------------------------------------------------------
 1. $addToSet: Adds distinct elements to an array
 db.users.updateOne(
   { name: "Alice" },
