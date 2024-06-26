@@ -1,0 +1,106 @@
+Fields
+------------------------------------------
+The following operators can be used to update fields:
+
+$currentDate: Sets the field value to the current date
+$inc: Increments the field value
+$rename: Renames the field
+$set: Sets the value of a field
+$unset: Removes the field from the document
+
+Array
+----------------------------------------------
+The following operators assist with updating arrays.
+
+$addToSet: Adds distinct elements to an array
+$pop: Removes the first or last element of an array
+$pull: Removes all elements from an array that match the query
+$push: Adds an element to an array
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+db.users.insertMany([
+  {
+    name: "Alice",
+    age: 30,
+    hobbies: ["reading", "traveling"],
+    joined: new Date("2022-01-01")
+  },
+  {
+    name: "Bob",
+    age: 25,
+    hobbies: ["coding", "gaming"],
+    joined: new Date("2023-01-01")
+  },
+  {
+    name: "Charlie",
+    age: 35,
+    hobbies: ["cooking", "biking"],
+    joined: new Date("2021-01-01")
+  }
+]);
+---------------------------------------------------------------------------------------------------------------------
+-----------------------------
+Using fields Update Operators
+-----------------------------
+1. $currentDate: Sets the field value to the current date
+db.users.updateOne(
+  { name: "Alice" },
+  { $currentDate: { lastModified: true } }
+);
+
+2. $inc: Increments the field value
+db.users.updateOne(
+  { name: "Bob" },
+  { $inc: { age: 1 } }
+);
+
+3. $rename: Renames the field
+db.users.updateOne(
+  { name: "Charlie" },
+  { $rename: { "joined": "joinDate" } }
+);
+
+4. $set: Sets the value of a field
+db.users.updateOne(
+  { name: "Alice" },
+  { $set: { email: "alice@example.com" } }
+);
+
+5. $unset: Removes the field from the document
+db.users.updateOne(
+  { name: "Bob" },
+  { $unset: { hobbies: "" } }
+);
+-------------------------
+Array Update Operators
+-------------------------
+1. $addToSet: Adds distinct elements to an array
+db.users.updateOne(
+  { name: "Alice" },
+  { $addToSet: { hobbies: "swimming" } }
+);
+
+2. $pop: Removes the first or last element of an array
+
+// Remove the last element
+db.users.updateOne(
+  { name: "Alice" },
+  { $pop: { hobbies: 1 } }
+);
+
+// Remove the first element
+db.users.updateOne(
+  { name: "Charlie" },
+  { $pop: { hobbies: -1 } }
+);
+
+3. $pull: Removes all elements from an array that match the query
+db.users.updateOne(
+  { name: "Alice" },
+  { $pull: { hobbies: "reading" } }
+);
+
+4. $push: Adds an element to an array 
+db.users.updateOne(
+  { name: "Charlie" },
+  { $push: { hobbies: "hiking" } }
+);
