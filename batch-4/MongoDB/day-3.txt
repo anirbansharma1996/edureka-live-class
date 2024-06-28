@@ -1,0 +1,105 @@
+::::: Grouping by Color and Calculating Total Quantity and Average Price :::::
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$color",
+      totalQuantity: { $sum: "$quantity" },
+      averagePrice: { $avg: "$price" }
+    }
+  },
+  { $sort: { totalQuantity: -1 } }
+]);
+
+::::::  Filtering Products by Price Range and Category ::::::
+db.products.aggregate([
+  {
+    $match: {
+      price: { $gte: 500, $lte: 1500 },
+      category: "electronics"
+    }
+  },
+  { $sort: { price: 1 } }
+]);
+
+::::: Finding Average Price and Total Quantity for Each Category ::::::
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$category",
+      averagePrice: { $avg: "$price" },
+      totalQuantity: { $sum: "$quantity" }
+    }
+  },
+  { $sort: { averagePrice: -1 } }
+]);
+
+:::::: Average Price of Available Products by Category :::::
+
+db.products.aggregate([
+  // Match documents with status "available"
+  { $match: { status: "available" } },
+  
+  // Group by category and calculate average price
+  {
+    $group: {
+      _id: "$category",
+      averagePrice: { $avg: "$price" }
+    }
+  },
+  // Sort by average price in descending order
+  { $sort: { averagePrice: -1 } }
+]);
+
+:::::: Total Quantity of Sold Products by Color ::::::
+
+db.products.aggregate([
+  // Match documents with status "sold"
+  { $match: { status: "sold" } },
+  
+  // Group by color and calculate total quantity
+  {
+    $group: {
+      _id: "$color",
+      totalQuantity: { $sum: "$quantity" }
+    }
+  },
+  
+  // Sort by total quantity in descending order
+  { $sort: { totalQuantity: -1 } }
+]);
+
+:::::: Average Price and Total Quantity of Electronics ::::::
+
+db.products.aggregate([
+  // Match documents with category "electronics"
+  { $match: { category: "electronics" } },
+  
+  // Group by category and calculate average price and total quantity
+  {
+    $group: {
+      _id: "$category",
+      averagePrice: { $avg: "$price" },
+      totalQuantity: { $sum: "$quantity" }
+    }
+  }
+]);
+
+:::::::: Total profit ::::::::
+
+db.products.aggregate([
+  { $match: { status: "out of stock" } },
+  {
+    $group: {
+      _id: "$color",
+      totalPrice: { $sum: "$price" },
+      totalQuantity: { $sum: 1 } 
+    }
+  },
+  {
+    $project: {
+      _id: 1,
+      totalPrice: 1,
+      totalProfit: { $multiply: ["$totalPrice", "$totalQuantity"] }
+    }
+  }
+]);
