@@ -59,6 +59,14 @@ const Login = async (req, res) => {
 const DeleteUser = async (req, res) => {
   try {
     const { id } = req.params;
+    const isSameUser = req.user.userid;
+    if (!isSameUser) {
+      return res.status(404).json("invalid user");
+    }
+
+    if (id !== isSameUser) {
+      return res.status(404).json("unauthorized");
+    }
     const isPresent = await User.findOne({ _id: id });
     if (!isPresent) {
       return res.status(404).json("user doesn't exist");
@@ -79,9 +87,17 @@ const UpdateUser = async (req, res) => {
     if (!isPresent) {
       return res.status(404).json("user doesn't exist");
     }
+    const isSameUser = req.user.userid;
+    if (!isSameUser) {
+      return res.status(404).json("invalid user");
+    }
+
+    if (id !== isSameUser) {
+      return res.status(404).json("unauthorized");
+    }
     const updateduser = await User.updateOne(
       { _id: id },
-      { $set: {name: name , email: email  } }
+      { $set: { name: name, email: email } }
     );
     if (!updateduser) {
       return res.status(404).json("something went wrong / invalid input");
