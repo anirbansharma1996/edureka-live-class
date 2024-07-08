@@ -1,4 +1,7 @@
 const Blog = require("../model/blog.model.js");
+const path = require("path");
+require("dotenv").config();
+const fs = require("fs");
 
 const getAllBlogs = async (req, res) => {
   try {
@@ -26,6 +29,11 @@ const getSingleBlog = async (req, res) => {
 const postBlog = async (req, res) => {
   try {
     const { title, content } = req.body;
+    const imgPath = req.file.path;
+    const imageBase = path.basename(imgPath);
+
+    const imgLink = `${process.env.SERVER}:${process.env.PORT}/api/uploads/${imageUrl}`;
+
     const author = req.user.userid;
     if (!author) {
       return res.status(404).json("invalid user");
@@ -34,7 +42,8 @@ const postBlog = async (req, res) => {
       title,
       content,
       author,
-      image: "",
+      imgPath : imageBase,
+      imageLink: imgLink, 
       date: new Date(),
     });
     await blog.save();
@@ -78,7 +87,17 @@ const deleteBlog = async (req, res) => {
     if (d_blog.author.toString() !== author) {
       return res.status(404).json("Not Authorized ");
     }
+    const filePath = `uploads/${d_blog.imgPath}`;
+
+    fs.unlink(filePath, function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("deleted image");
+      }
+    });
     await Blog.findByIdAndDelete(id);
+    
     res.status(201).json("blog deleted");
   } catch (error) {
     return res.status(503).json(error.message);

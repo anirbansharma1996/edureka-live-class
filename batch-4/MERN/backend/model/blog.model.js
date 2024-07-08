@@ -15,7 +15,10 @@ const BlogSchema = new Schema(
       ref: "users",
       required: true,
     },
-    image: {
+    imgPath: {
+      type: String
+    },
+    imageLink: {
       type: String,
     },
     date: {
