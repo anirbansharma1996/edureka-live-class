@@ -3,7 +3,6 @@ import axios from "axios";
 
 export const Home = () => {
   const [blogs, setBlogs] = useState([]);
-
   useEffect(() => {
     const f = async () => {
       try {
