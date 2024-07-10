@@ -7,6 +7,7 @@ import { Navbar } from "./components/Navbar";
 import { WriteBlog } from "./page/WriteBlog";
 import { User } from "./page/User";
 import { AuthContext } from "./context/AuthContext";
+import "./App.css"
 
 const App = () => {
   const { user, checkTokenExpiry } = useContext(AuthContext);

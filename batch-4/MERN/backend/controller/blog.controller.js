@@ -32,8 +32,9 @@ const postBlog = async (req, res) => {
     const imgPath = req.file.path;
     const imageBase = path.basename(imgPath);
 
-    const imgLink = `${process.env.SERVER}:${process.env.PORT}/api/uploads/${imageUrl}`;
+    const imgLink = `${process.env.SERVER}:${process.env.PORT}/api/uploads/${imageBase}`;
 
+   
     const author = req.user.userid;
     if (!author) {
       return res.status(404).json("invalid user");
@@ -109,5 +110,5 @@ module.exports = {
   getSingleBlog,
   postBlog,
   updateBlog,
-  deleteBlog,
+  deleteBlog,  
 };
