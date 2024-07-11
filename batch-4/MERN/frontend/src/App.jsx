@@ -7,7 +7,8 @@ import { Navbar } from "./components/Navbar";
 import { WriteBlog } from "./page/WriteBlog";
 import { User } from "./page/User";
 import { AuthContext } from "./context/AuthContext";
-import "./App.css"
+import "./App.css";
+import { SingleBlog } from "./components/SingleBlog";
 
 const App = () => {
   const { user, checkTokenExpiry } = useContext(AuthContext);
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/user" element={<User />} />
         <Route path="/write-blog" element={<WriteBlog />} />
+        <Route path="/blog" element={<SingleBlog />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>

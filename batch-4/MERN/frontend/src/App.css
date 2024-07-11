@@ -9,6 +9,10 @@
 .blogcard-child > img{
     width: 100%;
 }
+.links{
+  text-decoration: none;
+  color: inherit;
+}
 .first-font::first-letter{
     font-size: 40px;
 }

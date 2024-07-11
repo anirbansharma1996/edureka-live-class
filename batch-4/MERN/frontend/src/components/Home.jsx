@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const [blogs, setBlogs] = useState([]);
@@ -26,12 +27,14 @@ export const Home = () => {
 
 export const BlogCard = ({ props, key }) => {
   return (
-    <div key={key} className="blogcard-child">
-      <img  src={props.imageLink} alt={props.imagePath} />
-      <h1>{props.title}</h1>
-      <p className="first-font">{props.content}</p>
-      <p>{props.date}</p>
-    </div>
+    <Link className="links" to={`/blog?id=${props._id}`}>
+      <div key={key} className="blogcard-child">
+        <img src={props.imageLink} alt={props.imagePath} />
+        <h1>{props.title}</h1>
+        <span>{props.author?.name}</span>
+        <p className="first-font">{props.content}</p>
+        <p>{props.date}</p>
+      </div>
+    </Link>
   );
 };
-
