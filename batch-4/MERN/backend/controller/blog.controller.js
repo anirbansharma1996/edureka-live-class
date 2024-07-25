@@ -34,7 +34,6 @@ const postBlog = async (req, res) => {
 
     const imgLink = `${process.env.SERVER}:${process.env.PORT}/api/uploads/${imageBase}`;
 
-   
     const author = req.user.userid;
     if (!author) {
       return res.status(404).json("invalid user");
@@ -43,8 +42,8 @@ const postBlog = async (req, res) => {
       title,
       content,
       author,
-      imgPath : imageBase,
-      imageLink: imgLink, 
+      imgPath: imageBase,
+      imageLink: imgLink,
       date: new Date(),
     });
     await blog.save();
@@ -98,7 +97,7 @@ const deleteBlog = async (req, res) => {
       }
     });
     await Blog.findByIdAndDelete(id);
-    
+
     res.status(201).json("blog deleted");
   } catch (error) {
     return res.status(503).json(error.message);
@@ -110,5 +109,5 @@ module.exports = {
   getSingleBlog,
   postBlog,
   updateBlog,
-  deleteBlog,  
+  deleteBlog,
 };

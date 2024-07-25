@@ -35,6 +35,20 @@ export const Login = () => {
     }
   };
 
+  const handleForgetPassword = async () => {
+    setMessage("");
+    try {
+      const res = await axios.post(`${BASE_URL}/reset-password`, {
+        email: luser.email,
+      });
+      if ((res.statusText = "OK")) {
+        setMessage("An email has been sent");
+      }
+    } catch (error) {
+      setMessage(error.response.data.message);
+    }
+  };
+
   return (
     <div>
       <form onSubmit={handleSignup}>
@@ -44,16 +58,20 @@ export const Login = () => {
           <div key={el}>
             <label htmlFor={el}>{el.toUpperCase()}</label>
             <input
-              type={el == "password" ? "password" : "text"}
+              type={el == "password" ? "password" : "email"}
               id={el}
               name={el}
               value={luser[el]}
               onChange={handleInput}
+              required={el === "email"}
             />
           </div>
         ))}
         <input type="submit" value={loading ? "..." : "login"} />
       </form>
+      <p style={{ cursor: "pointer" }} onClick={handleForgetPassword}>
+        Forgot password
+      </p>
       Need an Account ? <Link to="/signup">SIGNUP</Link>
     </div>
   );

@@ -1,6 +1,7 @@
 const User = require("../model/user.model.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const GetAllUser = async (req, res) => {
@@ -108,4 +109,90 @@ const UpdateUser = async (req, res) => {
   }
 };
 
-module.exports = { Signup, Login, GetAllUser, DeleteUser, UpdateUser };
+const ForgetPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const isUser = await User.findOne({ email });
+
+    if (!isUser) {
+      return res.status(404).json({ message: "user not found" });
+    }
+    const secret = process.env.NODEMAILER_SECRET + isUser.password;
+    const token = jwt.sign({ email: isUser.email, id: isUser._id }, secret, {
+      expiresIn: "5m",
+    });
+    const link = `${process.env.SERVER}:${process.env.PORT}/api/reset-password/${isUser._id}/${token}`;
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "anirbansharma36@gmail.com",
+        pass: "kmbr sqmi fbhz xjun",
+      },
+    });
+    var mailoptions = {
+      from: "anirbansharma36@gmail.com",
+      to: email,
+      subject: "Password Reset Request",
+      text: `hello ${isUser.name} \n Click the link below , to reset your password \n ${link} \n NOTE : the link will exprire within 5 mins`,
+    };
+    transporter.sendMail(mailoptions, function (error, info) {
+      if (error) {
+        res.json({ error: error });
+      } else {
+        res.json({ "email sent": info.response });
+      }
+    });
+  } catch (error) {
+    res.status(503).json({ message: error.message });
+  }
+};
+
+const ResetPasswordGet = async (req, res) => {
+  try {
+    const { id, token } = req.params;
+    const isUser = await User.findOne({ _id: id });
+    if (!isUser) {
+      return res.status(404).json({ message: "invalid user" });
+    }
+    const secret = process.env.NODEMAILER_SECRET + isUser.password;
+    const verify = jwt.verify(token, secret);
+    if (verify) {
+      res.render("index", { email: verify.email, status: "not verified" });
+    }
+  } catch (error) {
+    res.status(503).json({ message: error.message });
+  }
+};
+
+const ResetPasswordPost = async (req, res) => {
+  try {
+    const { id, token } = req.params;
+    const { password } = req.body;
+    const isUser = await User.findOne({ _id: id });
+    if (!isUser) {
+      return res.status(404).json({ message: "invalid user" });
+    }
+    const secret = process.env.NODEMAILER_SECRET + isUser.password;
+    const verify = jwt.verify(token, secret);
+
+    const newPassword = await bcrypt.hash(password, 10);
+    await User.updateOne({ _id: id }, { $set: { password: newPassword } });
+    res.render("index", { email: verify.email, status: "verified" });
+  } catch (error) {
+    return res.status(503).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  Signup,
+  Login,
+  GetAllUser,
+  DeleteUser,
+  UpdateUser,
+  ForgetPassword,
+  ResetPasswordGet,
+  ResetPasswordPost,
+};
+
+// https://myaccount.google.com/apppasswords
+// Security > 2-Step Verification > ( scroll to bottom ) App Password >    enter app name & press create

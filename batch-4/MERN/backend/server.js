@@ -8,6 +8,7 @@ const BlogRoute = require("./router/blog.router.js");
 const app = express();
 
 dotenv.config();
+app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
